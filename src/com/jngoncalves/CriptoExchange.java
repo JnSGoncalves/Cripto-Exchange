@@ -1,20 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package com.jngoncalves;
 
 /**
  *
- * @author jnsil
+ * @author jnsgoncalves
  */
-public class CriptoExchange {
+import com.jngoncalves.view.JLogin;
 
-    /**
-     * @param args the command line arguments
-     */
+public class CriptoExchange {
     public static void main(String[] args) {
-        // TODO code application logic here
+        JLogin janela = new JLogin();
+        janela.setVisible(true);
     }
     
 }
