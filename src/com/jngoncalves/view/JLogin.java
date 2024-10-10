@@ -22,7 +22,7 @@ public class JLogin extends javax.swing.JFrame {
         lblLogin = new javax.swing.JLabel();
         lblReport = new javax.swing.JLabel();
         btLogar = new javax.swing.JButton();
-        btLogar1 = new javax.swing.JButton();
+        btCadastrar = new javax.swing.JButton();
         jpSenha = new javax.swing.JPanel();
         txtSenha = new javax.swing.JTextField();
         lblSenha = new javax.swing.JLabel();
@@ -30,7 +30,7 @@ public class JLogin extends javax.swing.JFrame {
         txtCpf = new javax.swing.JTextField();
         lblCpf = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cripto Exchange - Login");
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
@@ -50,10 +50,10 @@ public class JLogin extends javax.swing.JFrame {
         btLogar.setForeground(new java.awt.Color(255, 255, 255));
         btLogar.setText("Logar");
 
-        btLogar1.setBackground(new java.awt.Color(0, 153, 204));
-        btLogar1.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 14)); // NOI18N
-        btLogar1.setForeground(new java.awt.Color(255, 255, 255));
-        btLogar1.setText("Cadastrar");
+        btCadastrar.setBackground(new java.awt.Color(0, 153, 204));
+        btCadastrar.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 14)); // NOI18N
+        btCadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        btCadastrar.setText("Cadastrar");
 
         jpSenha.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -139,12 +139,12 @@ public class JLogin extends javax.swing.JFrame {
                             .addComponent(jpCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 54, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPrincipalLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jpPrincipalLayout.createSequentialGroup()
+                .addGap(179, 179, 179)
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btLogar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btLogar1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(177, 177, 177))
+                    .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +160,7 @@ public class JLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btLogar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btLogar1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -215,8 +215,8 @@ public class JLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btLogar;
-    private javax.swing.JButton btLogar1;
     private javax.swing.JPanel jpCpf;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpSenha;

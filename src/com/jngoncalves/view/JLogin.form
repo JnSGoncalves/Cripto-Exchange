@@ -2,7 +2,7 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="Cripto Exchange - Login"/>
   </Properties>
   <SyntheticProperties>
@@ -67,13 +67,13 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btLogar" max="32767" attributes="0"/>
-                      <Component id="btLogar1" min="-2" pref="105" max="-2" attributes="0"/>
+                      <Component id="btCadastrar" min="-2" pref="105" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
+                  <EmptySpace pref="177" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -91,7 +91,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btLogar" min="-2" pref="33" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btLogar1" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="btCadastrar" min="-2" pref="33" max="-2" attributes="0"/>
                   <EmptySpace pref="32" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -135,7 +135,7 @@
             <Property name="text" type="java.lang.String" value="Logar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btLogar1">
+        <Component class="javax.swing.JButton" name="btCadastrar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="99" red="0" type="rgb"/>
