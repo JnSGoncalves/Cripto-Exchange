@@ -1,4 +1,4 @@
-package com.jngoncalves.view;
+package view;
 
 public class JInicial extends javax.swing.JFrame {
 
