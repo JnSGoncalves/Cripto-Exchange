@@ -1,4 +1,4 @@
-package com.jngoncalves.view;
+package view;
 
 public class JCadastro extends javax.swing.JFrame {
 
