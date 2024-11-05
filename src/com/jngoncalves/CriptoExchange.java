@@ -7,5 +7,4 @@ public class CriptoExchange {
         JInicial ji = JInicial.getInstance();
         ji.setVisible(true);
     }
-    
 }

@@ -24,7 +24,13 @@ public class CCadastro {
             String sobrenome = view.getTxtSobrenome().getText();
             String cpf = view.getTxtCpf().getText();
             String senha = view.getTxtSenha().getText();
-            String confimSenha = view.getTxtConfirmSenha().getText();
+            String confirmSenha = view.getTxtConfirmSenha().getText();
+            
+            if(nome.isEmpty() || sobrenome.isEmpty() || cpf.isEmpty() || senha.isEmpty() || confirmSenha.isEmpty()){
+                throw new IllegalArgumentException("Preencha todos os campos");
+            }
+            
+            // Necessária implementação de verificação do CPF para só deixar passar 11 números inteiros
             
             Conexao conexao = new Conexao();
             
@@ -37,8 +43,8 @@ public class CCadastro {
                 throw new IllegalArgumentException("CPF já cadastrado!");
             }
             
-            if(!senha.equals(confimSenha)){
-                throw new IllegalArgumentException("As senha devem ser iguais!");
+            if(!senha.equals(confirmSenha)){
+                throw new IllegalArgumentException("As senhas devem ser iguais!");
             }
             
             dao.inserir(new Investidor(nome, sobrenome, cpf, senha));
@@ -50,7 +56,7 @@ public class CCadastro {
             view.dispose();
             
         }catch(IllegalArgumentException e){
-            view.getLblReport().setText(e.toString());
+            view.getLblReport().setText(e.getMessage());
         }catch(SQLException e){
             e.toString();
             JOptionPane.showMessageDialog(view, "Investidor não cadastrado!",
