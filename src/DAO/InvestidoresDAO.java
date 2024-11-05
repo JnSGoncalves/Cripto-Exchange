@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import model.user.Investidor;
-import model.user.Pessoa;
 
 public class InvestidoresDAO {
     private Connection conn;

@@ -5,8 +5,8 @@ public class Bitcoin extends Moedas implements Tarifacao {
     private final double tarifaVenda = 0.03;
     private double quantia;
 
-    public Bitcoin(double quantia, String nomeMoeda, double valor) {
-        super(nomeMoeda, 1, valor);
+    public Bitcoin(double quantia) {
+        super("bitcoin", 1);
         this.quantia = quantia;
     }
 

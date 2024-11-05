@@ -48,6 +48,7 @@ public class CCadastro {
             }
             
             dao.inserir(new Investidor(nome, sobrenome, cpf, senha));
+            
             JOptionPane.showMessageDialog(view, "Investidor cadastrado!",
                     "Aviso", JOptionPane.INFORMATION_MESSAGE);
             

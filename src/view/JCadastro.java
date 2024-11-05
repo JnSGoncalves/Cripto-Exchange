@@ -18,7 +18,7 @@ public class JCadastro extends javax.swing.JFrame {
         return janelaUnica;
     }
     
-    public JCadastro() {
+    private JCadastro() {
         c = new CCadastro(this);
         initComponents();
     }

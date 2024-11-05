@@ -6,31 +6,33 @@ public class Carteira {
     private Ethereum ethereum;
     private Ripple ripple;
 
+    public Carteira() {
+        real = new Real(0);
+        bitcoin = new Bitcoin(0);
+        ethereum = new Ethereum(0);
+        ripple = new Ripple(0);
+    }
+
+    public Carteira(double real, double bitcoin, double ethereum, double ripple) {
+        this.real = new Real(real);
+        this.bitcoin = new Bitcoin(bitcoin);
+        this.ethereum = new Ethereum(ethereum);
+        this.ripple = new Ripple(ripple);
+    }
+    
     public Real getReal() {
         return real;
-    }
-    public void setReal(Real real) {
-        this.real = real;
     }
 
     public Bitcoin getBitcoin() {
         return bitcoin;
     }
-    public void setBitcoin(Bitcoin bitcoin) {
-        this.bitcoin = bitcoin;
-    }
 
     public Ethereum getEthereum() {
         return ethereum;
     }
-    public void setEthereum(Ethereum ethereum) {
-        this.ethereum = ethereum;
-    }
-
+    
     public Ripple getRipple() {
         return ripple;
-    }
-    public void setRipple(Ripple ripple) {
-        this.ripple = ripple;
     }
 }
