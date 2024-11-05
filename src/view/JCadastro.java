@@ -28,21 +28,21 @@ public class JCadastro extends javax.swing.JFrame {
         lblNome = new javax.swing.JLabel();
         lblSobrenome = new javax.swing.JLabel();
         txtSobrenome = new javax.swing.JTextField();
-        txtSenha = new javax.swing.JTextField();
         lblSenha = new javax.swing.JLabel();
-        txtConfirmSenha = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JPasswordField();
+        btViewSenha = new javax.swing.JToggleButton();
         lblConfirmSenha = new javax.swing.JLabel();
         txtCpf = new javax.swing.JTextField();
         lblCpf = new javax.swing.JLabel();
+        txtConfirmSenha = new javax.swing.JPasswordField();
+        btViewConfirmSenha = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cripto Exchange - Cadastro");
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-        jpPrincipal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblTitulo.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 24)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("Cadastro");
 
@@ -64,48 +64,39 @@ public class JCadastro extends javax.swing.JFrame {
 
         txtNome.setBackground(new java.awt.Color(204, 204, 255));
         txtNome.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 18)); // NOI18N
-        txtNome.setForeground(new java.awt.Color(0, 0, 0));
 
         lblNome.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 18)); // NOI18N
-        lblNome.setForeground(new java.awt.Color(0, 0, 0));
         lblNome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNome.setText("Nome ");
 
         lblSobrenome.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 18)); // NOI18N
-        lblSobrenome.setForeground(new java.awt.Color(0, 0, 0));
         lblSobrenome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSobrenome.setText("Sobrenome");
 
         txtSobrenome.setBackground(new java.awt.Color(204, 204, 255));
         txtSobrenome.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 18)); // NOI18N
-        txtSobrenome.setForeground(new java.awt.Color(0, 0, 0));
         txtSobrenome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSobrenomeActionPerformed(evt);
             }
         });
 
-        txtSenha.setBackground(new java.awt.Color(204, 204, 255));
-        txtSenha.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 18)); // NOI18N
-        txtSenha.setForeground(new java.awt.Color(0, 0, 0));
-
         lblSenha.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 18)); // NOI18N
-        lblSenha.setForeground(new java.awt.Color(0, 0, 0));
         lblSenha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSenha.setText("Senha");
 
-        txtConfirmSenha.setBackground(new java.awt.Color(204, 204, 255));
-        txtConfirmSenha.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 18)); // NOI18N
-        txtConfirmSenha.setForeground(new java.awt.Color(0, 0, 0));
+        txtSenha.setBackground(new java.awt.Color(204, 204, 255));
+        txtSenha.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 18)); // NOI18N
+
+        btViewSenha.setBackground(new java.awt.Color(255, 246, 255));
+        btViewSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
 
         lblConfirmSenha.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 18)); // NOI18N
-        lblConfirmSenha.setForeground(new java.awt.Color(0, 0, 0));
         lblConfirmSenha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblConfirmSenha.setText("Confirmar Senha");
 
         txtCpf.setBackground(new java.awt.Color(204, 204, 255));
         txtCpf.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 18)); // NOI18N
-        txtCpf.setForeground(new java.awt.Color(0, 0, 0));
         txtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCpfActionPerformed(evt);
@@ -113,9 +104,14 @@ public class JCadastro extends javax.swing.JFrame {
         });
 
         lblCpf.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 18)); // NOI18N
-        lblCpf.setForeground(new java.awt.Color(0, 0, 0));
         lblCpf.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCpf.setText("CPF");
+
+        txtConfirmSenha.setBackground(new java.awt.Color(204, 204, 255));
+        txtConfirmSenha.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 18)); // NOI18N
+
+        btViewConfirmSenha.setBackground(new java.awt.Color(255, 246, 255));
+        btViewConfirmSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
 
         javax.swing.GroupLayout jpDadosCadastroLayout = new javax.swing.GroupLayout(jpDadosCadastro);
         jpDadosCadastro.setLayout(jpDadosCadastroLayout);
@@ -125,7 +121,7 @@ public class JCadastro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jpDadosCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpDadosCadastroLayout.createSequentialGroup()
-                        .addComponent(lblConfirmSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                        .addComponent(lblConfirmSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtConfirmSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpDadosCadastroLayout.createSequentialGroup()
@@ -145,7 +141,11 @@ public class JCadastro extends javax.swing.JFrame {
                                     .addComponent(txtCpf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                                     .addComponent(txtSobrenome)
                                     .addComponent(txtSenha))))))
-                .addGap(47, 47, 47))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpDadosCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btViewSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btViewConfirmSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jpDadosCadastroLayout.setVerticalGroup(
             jpDadosCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,13 +163,17 @@ public class JCadastro extends javax.swing.JFrame {
                     .addComponent(lblCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpDadosCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpDadosCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpDadosCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btViewSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpDadosCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblConfirmSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtConfirmSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpDadosCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpDadosCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblConfirmSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtConfirmSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btViewConfirmSenha))
                 .addContainerGap())
         );
 
@@ -179,17 +183,17 @@ public class JCadastro extends javax.swing.JFrame {
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jpPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpDadosCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(jpPrincipalLayout.createSequentialGroup()
                 .addGap(189, 189, 189)
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btLogar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(189, Short.MAX_VALUE))
+            .addGroup(jpPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpDadosCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,42 +237,44 @@ public class JCadastro extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JCadastro().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(JCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(JCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(JCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(JCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new JCadastro().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btLogar;
+    private javax.swing.JToggleButton btViewConfirmSenha;
+    private javax.swing.JToggleButton btViewSenha;
     private javax.swing.JPanel jpDadosCadastro;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JLabel lblConfirmSenha;
@@ -278,10 +284,10 @@ public class JCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblSobrenome;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JTextField txtConfirmSenha;
+    private javax.swing.JPasswordField txtConfirmSenha;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtSobrenome;
     // End of variables declaration//GEN-END:variables
 }
