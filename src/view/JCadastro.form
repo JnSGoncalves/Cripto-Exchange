@@ -283,6 +283,9 @@
             </Component>
             <Component class="javax.swing.JToggleButton" name="btViewSenha">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="f6" red="ff" type="rgb"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/view/imagens/olho-25x25.png"/>
                 </Property>
@@ -331,6 +334,9 @@
             </Component>
             <Component class="javax.swing.JToggleButton" name="btViewConfirmSenha">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="f6" red="ff" type="rgb"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/view/imagens/olho-25x25.png"/>
                 </Property>

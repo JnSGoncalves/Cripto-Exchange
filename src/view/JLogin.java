@@ -63,7 +63,10 @@ public class JLogin extends javax.swing.JFrame {
         txtSenha.setBackground(new java.awt.Color(204, 204, 255));
         txtSenha.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 18)); // NOI18N
 
+        btViewSenha.setBackground(new java.awt.Color(255, 246, 255));
+        btViewSenha.setForeground(new java.awt.Color(255, 255, 255));
         btViewSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
+        btViewSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout jpSenhaLayout = new javax.swing.GroupLayout(jpSenha);
         jpSenha.setLayout(jpSenhaLayout);
@@ -82,9 +85,9 @@ public class JLogin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpSenhaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btViewSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(btViewSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpSenhaLayout.createSequentialGroup()
-                        .addGap(0, 2, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jpSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))

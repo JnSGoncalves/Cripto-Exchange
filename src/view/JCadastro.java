@@ -88,6 +88,7 @@ public class JCadastro extends javax.swing.JFrame {
         txtSenha.setBackground(new java.awt.Color(204, 204, 255));
         txtSenha.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 18)); // NOI18N
 
+        btViewSenha.setBackground(new java.awt.Color(255, 246, 255));
         btViewSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
 
         lblConfirmSenha.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 18)); // NOI18N
@@ -109,6 +110,7 @@ public class JCadastro extends javax.swing.JFrame {
         txtConfirmSenha.setBackground(new java.awt.Color(204, 204, 255));
         txtConfirmSenha.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 18)); // NOI18N
 
+        btViewConfirmSenha.setBackground(new java.awt.Color(255, 246, 255));
         btViewConfirmSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
 
         javax.swing.GroupLayout jpDadosCadastroLayout = new javax.swing.GroupLayout(jpDadosCadastro);
