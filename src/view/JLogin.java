@@ -1,11 +1,16 @@
 package view;
 
 public class JLogin extends javax.swing.JFrame {
-
-    /**
-     * Creates new form JLogin
-     */
-    public JLogin() {
+    private static JLogin janelaUnica;
+    
+    public static JLogin getInstance(){
+        if(janelaUnica == null){
+            janelaUnica = new JLogin();
+        }
+        return janelaUnica;
+    }
+    
+    private JLogin() {
         initComponents();
     }
 
@@ -31,7 +36,7 @@ public class JLogin extends javax.swing.JFrame {
         txtCpf = new javax.swing.JTextField();
         lblCpf = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cripto Exchange - Login");
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
@@ -83,14 +88,12 @@ public class JLogin extends javax.swing.JFrame {
         jpSenhaLayout.setVerticalGroup(
             jpSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpSenhaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jpSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btViewSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpSenhaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jpSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jpSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
