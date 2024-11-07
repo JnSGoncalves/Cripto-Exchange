@@ -1,14 +1,19 @@
 package model.funcoes;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.JLabel;
 import model.moedas.Carteira;
 import view.JPrincipal;
 
 public class SaldoFuncoes {
     private static final DecimalFormat formatoValor = new DecimalFormat("R$ #,##0.00");
-    private static final NumberFormat formatoQtd = NumberFormat.getInstance(new java.util.Locale("pt", "BR"));
+    // Como é trabalhado com muitas casas decimais a melhor opção é que as transações sejam realizadas com valores 
+    // acima de 1 real
+    private static final NumberFormat formatoQtd = new DecimalFormat("#0.######################", 
+    DecimalFormatSymbols.getInstance(new Locale("pt", "BR")));
     
     public static void verSaldo(JPrincipal view, boolean saldoVisivel, Carteira carteira){
         JLabel total = view.getSaldoTotalValor();

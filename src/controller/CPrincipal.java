@@ -14,6 +14,7 @@ public class CPrincipal {
     public CPrincipal(JPrincipal view, Investidor inv) {
         this.inv = inv;
         this.view = view;
+        this.view.getLblBemVindo().setText("Bem Vindo(a) " + this.inv.getNome()+ "!");
     }
 
     // Saldo
@@ -32,6 +33,7 @@ public class CPrincipal {
                 java.util.Arrays.fill(password, '\u0000');
 
                 if(Consultas.verSenha(inv.getId(), senha)){
+                    inv.setCarteira(Consultas.getCarteira(inv.getId()));
                     SaldoFuncoes.verSaldo(view, saldoVisivel, inv.getCarteira());
                     return true;
                 }else{
@@ -51,6 +53,8 @@ public class CPrincipal {
         if(saldoVisivel){
             inv.setCarteira(Consultas.getCarteira(inv.getId()));
             SaldoFuncoes.verSaldo(view, saldoVisivel, inv.getCarteira());
+        }else{
+            inv.setCarteira(Consultas.getCarteira(inv.getId()));
         }
     }
 }

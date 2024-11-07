@@ -9,9 +9,11 @@ import model.user.Investidor;
 public class JPrincipal extends javax.swing.JFrame {
     private CPrincipal c;
     private boolean saldoVisivel = false;
+    private boolean janelaIniciada = false;
     
     public JPrincipal(Investidor inv) {
         initComponents();
+        janelaIniciada = true;
         c = new CPrincipal(this, inv);
     }
 
@@ -58,6 +60,12 @@ public class JPrincipal extends javax.swing.JFrame {
 
         jpFundo.setBackground(new java.awt.Color(255, 255, 255));
 
+        jpAbas.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jpAbasStateChanged(evt);
+            }
+        });
+
         jpSaldo.setBackground(new java.awt.Color(255, 255, 255));
 
         lblTituloSaldo.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
@@ -98,60 +106,74 @@ public class JPrincipal extends javax.swing.JFrame {
         jpSaldoReal.add(saldoRealValor);
 
         jpSaldoCriptos.setBackground(new java.awt.Color(255, 255, 255));
+        jpSaldoCriptos.setMaximumSize(new java.awt.Dimension(426, 195));
+        jpSaldoCriptos.setMinimumSize(new java.awt.Dimension(10, 10));
         jpSaldoCriptos.setLayout(new java.awt.GridLayout(3, 3));
 
         lblSaldoBitcoin.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         lblSaldoBitcoin.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSaldoBitcoin.setText("Bitcoin:");
         lblSaldoBitcoin.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 30, 1, 30));
+        lblSaldoBitcoin.setMinimumSize(new java.awt.Dimension(30, 35));
+        lblSaldoBitcoin.setPreferredSize(null);
         jpSaldoCriptos.add(lblSaldoBitcoin);
 
-        saldoBitcoinQtd.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        saldoBitcoinQtd.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
         saldoBitcoinQtd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         saldoBitcoinQtd.setText("QTD. -,--");
-        saldoBitcoinQtd.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 30, 1, 30));
+        saldoBitcoinQtd.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 5, 1, 5));
+        saldoBitcoinQtd.setMaximumSize(new java.awt.Dimension(300, 35));
         jpSaldoCriptos.add(saldoBitcoinQtd);
 
-        saldoBitcoinValor.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        saldoBitcoinValor.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
         saldoBitcoinValor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         saldoBitcoinValor.setText("R$ -,--");
         saldoBitcoinValor.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 30, 1, 30));
+        saldoBitcoinValor.setMinimumSize(new java.awt.Dimension(30, 35));
         jpSaldoCriptos.add(saldoBitcoinValor);
 
         lblSaldoEtherium.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         lblSaldoEtherium.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSaldoEtherium.setText("Etherium:");
         lblSaldoEtherium.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 1, 30));
+        lblSaldoEtherium.setMinimumSize(new java.awt.Dimension(30, 26));
+        lblSaldoEtherium.setPreferredSize(null);
         jpSaldoCriptos.add(lblSaldoEtherium);
 
-        saldoEtheriumQtd.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        saldoEtheriumQtd.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
         saldoEtheriumQtd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         saldoEtheriumQtd.setText("QTD. -,--");
-        saldoEtheriumQtd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 1, 30));
+        saldoEtheriumQtd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 5));
+        saldoEtheriumQtd.setMaximumSize(new java.awt.Dimension(300, 21));
         jpSaldoCriptos.add(saldoEtheriumQtd);
 
-        saldoEtheriumValor.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        saldoEtheriumValor.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
         saldoEtheriumValor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         saldoEtheriumValor.setText("R$ -,--");
         saldoEtheriumValor.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 1, 30));
+        saldoEtheriumValor.setMinimumSize(new java.awt.Dimension(30, 26));
         jpSaldoCriptos.add(saldoEtheriumValor);
 
         lblSaldoRipple.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         lblSaldoRipple.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSaldoRipple.setText("Ripple:");
         lblSaldoRipple.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 40, 30));
+        lblSaldoRipple.setMinimumSize(new java.awt.Dimension(30, 65));
+        lblSaldoRipple.setPreferredSize(null);
         jpSaldoCriptos.add(lblSaldoRipple);
 
-        saldoRippleQtd.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        saldoRippleQtd.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
         saldoRippleQtd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         saldoRippleQtd.setText("QTD. -,--");
-        saldoRippleQtd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 40, 30));
+        saldoRippleQtd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 40, 5));
+        saldoRippleQtd.setMaximumSize(new java.awt.Dimension(300, 60));
         jpSaldoCriptos.add(saldoRippleQtd);
 
-        saldoRippleValor.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        saldoRippleValor.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
         saldoRippleValor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         saldoRippleValor.setText("R$ -,--");
         saldoRippleValor.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 40, 30));
+        saldoRippleValor.setMinimumSize(new java.awt.Dimension(30, 65));
         jpSaldoCriptos.add(saldoRippleValor);
 
         saldoBtAtualizar.setBackground(new java.awt.Color(0, 153, 204));
@@ -328,6 +350,17 @@ public class JPrincipal extends javax.swing.JFrame {
         c.saldoAtualizar(saldoVisivel);
     }//GEN-LAST:event_saldoBtAtualizarActionPerformed
 
+    private void jpAbasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jpAbasStateChanged
+        saldoVisivel = false;
+        if(janelaIniciada){
+            c.saldoVisualizar(saldoVisivel);
+            saldoBtVisualizar.setSelected(false);
+        }
+    }//GEN-LAST:event_jpAbasStateChanged
+
+    public JLabel getLblBemVindo() {
+        return lblBemVindo;
+    }
     
     // Gets Aba Saldo
     public JLabel getSaldoBitcoinQtd() {
