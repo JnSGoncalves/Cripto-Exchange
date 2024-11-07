@@ -1,7 +1,13 @@
 package view;
 
+import controller.CLogin;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 public class JLogin extends javax.swing.JFrame {
     private static JLogin janelaUnica;
+    private boolean viewSenha = false;
+    private final CLogin c;
     
     public static JLogin getInstance(){
         if(janelaUnica == null){
@@ -11,8 +17,17 @@ public class JLogin extends javax.swing.JFrame {
     }
     
     private JLogin() {
+        c = new CLogin(this);
         initComponents();
     }
+
+    public JTextField getTxtCpf() {
+        return txtCpf;
+    }
+    
+    public JPasswordField getTxtSenha() {
+        return txtSenha;
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,11 +68,21 @@ public class JLogin extends javax.swing.JFrame {
         btLogar.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 14)); // NOI18N
         btLogar.setForeground(new java.awt.Color(255, 255, 255));
         btLogar.setText("Logar");
+        btLogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLogarActionPerformed(evt);
+            }
+        });
 
         btCadastrar.setBackground(new java.awt.Color(0, 153, 204));
         btCadastrar.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 14)); // NOI18N
         btCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btCadastrar.setText("Cadastrar");
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
 
         jpSenha.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -72,6 +97,12 @@ public class JLogin extends javax.swing.JFrame {
         btViewSenha.setForeground(new java.awt.Color(255, 255, 255));
         btViewSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
         btViewSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btViewSenha.setFocusable(false);
+        btViewSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btViewSenhaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpSenhaLayout = new javax.swing.GroupLayout(jpSenha);
         jpSenha.setLayout(jpSenhaLayout);
@@ -185,40 +216,19 @@ public class JLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new JLogin().setVisible(true);
-//            }
-//        });
-//    }
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        c.abrirCadastro();
+    }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void btLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogarActionPerformed
+        c.logar();
+    }//GEN-LAST:event_btLogarActionPerformed
+
+    private void btViewSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btViewSenhaActionPerformed
+        viewSenha = !viewSenha;
+        c.viewSenha(viewSenha);
+    }//GEN-LAST:event_btViewSenhaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;

@@ -165,9 +165,9 @@ public class JCadastro extends javax.swing.JFrame {
         btViewSenha.setBackground(new java.awt.Color(255, 246, 255));
         btViewSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
         btViewSenha.setFocusable(false);
-        btViewSenha.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                btViewSenhaStateChanged(evt);
+        btViewSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btViewSenhaActionPerformed(evt);
             }
         });
 
@@ -193,9 +193,9 @@ public class JCadastro extends javax.swing.JFrame {
         btViewConfirmSenha.setBackground(new java.awt.Color(255, 246, 255));
         btViewConfirmSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
         btViewConfirmSenha.setFocusable(false);
-        btViewConfirmSenha.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                btViewConfirmSenhaStateChanged(evt);
+        btViewConfirmSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btViewConfirmSenhaActionPerformed(evt);
             }
         });
 
@@ -253,7 +253,7 @@ public class JCadastro extends javax.swing.JFrame {
                     .addGroup(jpDadosCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btViewSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, Short.MAX_VALUE))
+                    .addComponent(btViewSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpDadosCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpDadosCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -328,15 +328,15 @@ public class JCadastro extends javax.swing.JFrame {
        c.abrirLogin();
     }//GEN-LAST:event_btLogarActionPerformed
 
-    private void btViewSenhaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btViewSenhaStateChanged
+    private void btViewSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btViewSenhaActionPerformed
         senhaVisivel = !senhaVisivel;
         c.viewSenha(senhaVisivel);
-    }//GEN-LAST:event_btViewSenhaStateChanged
+    }//GEN-LAST:event_btViewSenhaActionPerformed
 
-    private void btViewConfirmSenhaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btViewConfirmSenhaStateChanged
+    private void btViewConfirmSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btViewConfirmSenhaActionPerformed
         confirmSenhaVisivel = !confirmSenhaVisivel;
         c.viewConfirmSenha(confirmSenhaVisivel);
-    }//GEN-LAST:event_btViewConfirmSenhaStateChanged
+    }//GEN-LAST:event_btViewConfirmSenhaActionPerformed
 
     /**
      * @param args the command line arguments

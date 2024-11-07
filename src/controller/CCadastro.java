@@ -49,12 +49,10 @@ public class CCadastro {
             
             dao.inserir(new Investidor(nome, sobrenome, cpf, senha));
             
-            JOptionPane.showMessageDialog(view, "Investidor cadastrado!",
+            JOptionPane.showMessageDialog(view, "Investidor cadastrado!\nRealize o login para continuar.",
                     "Aviso", JOptionPane.INFORMATION_MESSAGE);
             
-            JLogin jlogin = JLogin.getInstance();
-            jlogin.setVisible(true);
-            view.dispose();
+            abrirLogin();
             
         }catch(IllegalArgumentException e){
             view.getLblReport().setText(e.getMessage());
