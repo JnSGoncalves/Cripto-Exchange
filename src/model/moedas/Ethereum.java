@@ -6,7 +6,7 @@ public class Ethereum extends Moedas implements Tarifacao {
     private double quantia;
 
     public Ethereum(double quantia) {
-        super("ethereum", 1);
+        super("ethereum", 2);
         this.quantia = quantia;
     }
 

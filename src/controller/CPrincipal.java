@@ -41,6 +41,8 @@ public class CPrincipal {
                         "Erro", JOptionPane.ERROR_MESSAGE);
                     return false;
                 }
+            }else{
+                view.getSaldoBtVisualizar().setSelected(false);
             }
         }else{
             SaldoFuncoes.verSaldo(view, saldoVisivel, inv.getCarteira());

@@ -26,12 +26,21 @@ public class SaldoFuncoes {
         JLabel rippleValor = view.getSaldoRippleValor();
                 
         if(saldoVisivel){
-            // Cálculo dos valores das moedas faltando
-            total.setText(formatoValor.format(0));
-            real.setText(formatoValor.format(carteira.getReal().getQuantia()));
-            bitcoinValor.setText(formatoValor.format(0));
-            ethereumValor.setText(formatoValor.format(0));
-            rippleValor.setText(formatoValor.format(0));
+            double valorBitcoin = carteira.getBitcoin().getQuantia() * 
+                    Consultas.getValor(carteira.getBitcoin().getIdMoeda());
+            double valorEthereum = carteira.getEthereum().getQuantia() * 
+                    Consultas.getValor(carteira.getEthereum().getIdMoeda());
+            double valorRipple = carteira.getRipple().getQuantia() * 
+                    Consultas.getValor(carteira.getRipple().getIdMoeda());
+            double valorReal = carteira.getReal().getQuantia();
+            
+            double valorTotal = valorReal + valorBitcoin + valorEthereum + valorRipple;
+            
+            total.setText(formatoValor.format(valorTotal));
+            real.setText(formatoValor.format(valorReal));
+            bitcoinValor.setText(formatoValor.format(valorBitcoin));
+            ethereumValor.setText(formatoValor.format(valorEthereum));
+            rippleValor.setText(formatoValor.format(valorRipple));
             bitcoinQtd.setText("Qtd. " + formatoQtd.format(carteira.getBitcoin().getQuantia()));
             ethereumQtd.setText("Qtd. " + formatoQtd.format(carteira.getEthereum().getQuantia()));
             rippleQtd.setText("Qtd. " + formatoQtd.format(carteira.getRipple().getQuantia()));

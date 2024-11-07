@@ -6,7 +6,7 @@ public class Ripple extends Moedas implements Tarifacao {
     private double quantia;
 
     public Ripple(double quantia) {
-        super("ripple", 1);
+        super("ripple", 3);
         this.quantia = quantia;
     }
 
