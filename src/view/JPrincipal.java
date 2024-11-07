@@ -3,12 +3,15 @@ package view;
 import controller.CPrincipal;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import model.user.Investidor;
 
 public class JPrincipal extends javax.swing.JFrame {
     private CPrincipal c;
     private boolean saldoVisivel = false;
+    private boolean saqueSaldoVisivel = false;
     private boolean janelaIniciada = false;
     
     public JPrincipal(Investidor inv) {
@@ -59,14 +62,15 @@ public class JPrincipal extends javax.swing.JFrame {
         lblTituloDeposito = new javax.swing.JLabel();
         jpDeposito = new javax.swing.JPanel();
         lblValorDeposito = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblSeparador1 = new javax.swing.JLabel();
         saqueDepValorDeposito = new javax.swing.JTextField();
         jpSaque = new javax.swing.JPanel();
         lblValorSaque = new javax.swing.JLabel();
+        lblSeparador2 = new javax.swing.JLabel();
         saqueDepValorSaque = new javax.swing.JTextField();
         jpSaqueDepBotoes = new javax.swing.JPanel();
         saldoBtAtualizar1 = new javax.swing.JButton();
-        saldoBtVisualizar1 = new javax.swing.JToggleButton();
+        saqueDepBtViewSaldo = new javax.swing.JToggleButton();
         saldoBtAtualizar2 = new javax.swing.JButton();
         jpSaqueDepSaldoAtual = new javax.swing.JPanel();
         lblSaqueDepSaldo = new javax.swing.JLabel();
@@ -93,8 +97,6 @@ public class JPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cripto Exchange - Menu");
-        setMaximumSize(new java.awt.Dimension(840, 480));
-        setPreferredSize(new java.awt.Dimension(840, 480));
         setSize(new java.awt.Dimension(840, 480));
 
         jpFundo.setBackground(new java.awt.Color(255, 255, 255));
@@ -151,7 +153,6 @@ public class JPrincipal extends javax.swing.JFrame {
 
         jpSaldoCriptos.setBackground(new java.awt.Color(255, 255, 255));
         jpSaldoCriptos.setMaximumSize(new java.awt.Dimension(426, 195));
-        jpSaldoCriptos.setMinimumSize(new java.awt.Dimension(10, 10));
         jpSaldoCriptos.setLayout(new java.awt.GridLayout(3, 3));
 
         lblSaldoBitcoin.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
@@ -160,7 +161,6 @@ public class JPrincipal extends javax.swing.JFrame {
         lblSaldoBitcoin.setText("Bitcoin:");
         lblSaldoBitcoin.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 30, 1, 30));
         lblSaldoBitcoin.setMinimumSize(new java.awt.Dimension(30, 35));
-        lblSaldoBitcoin.setPreferredSize(null);
         jpSaldoCriptos.add(lblSaldoBitcoin);
 
         saldoBitcoinQtd.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
@@ -185,7 +185,6 @@ public class JPrincipal extends javax.swing.JFrame {
         lblSaldoEtherium.setText("Etherium:");
         lblSaldoEtherium.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 1, 30));
         lblSaldoEtherium.setMinimumSize(new java.awt.Dimension(30, 26));
-        lblSaldoEtherium.setPreferredSize(null);
         jpSaldoCriptos.add(lblSaldoEtherium);
 
         saldoEtheriumQtd.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
@@ -210,7 +209,6 @@ public class JPrincipal extends javax.swing.JFrame {
         lblSaldoRipple.setText("Ripple:");
         lblSaldoRipple.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 40, 30));
         lblSaldoRipple.setMinimumSize(new java.awt.Dimension(30, 65));
-        lblSaldoRipple.setPreferredSize(null);
         jpSaldoCriptos.add(lblSaldoRipple);
 
         saldoRippleQtd.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
@@ -344,14 +342,15 @@ public class JPrincipal extends javax.swing.JFrame {
         jpDeposito.setMaximumSize(new java.awt.Dimension(840, 60));
         jpDeposito.setPreferredSize(new java.awt.Dimension(840, 60));
 
-        lblValorDeposito.setFont(lblSaqueDepSenha.getFont());
+        lblValorDeposito.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 18)); // NOI18N
         lblValorDeposito.setForeground(new java.awt.Color(0, 0, 0));
+        lblValorDeposito.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblValorDeposito.setText("Valor de depósito:");
         lblValorDeposito.setPreferredSize(new java.awt.Dimension(160, 24));
         jpDeposito.add(lblValorDeposito);
 
-        jLabel3.setFont(lblSaqueDepSenha.getFont());
-        jpDeposito.add(jLabel3);
+        lblSeparador1.setFont(lblSaqueDepSenha.getFont());
+        jpDeposito.add(lblSeparador1);
 
         saqueDepValorDeposito.setBackground(new java.awt.Color(204, 204, 255));
         saqueDepValorDeposito.setFont(saqueDepSenha.getFont());
@@ -363,11 +362,13 @@ public class JPrincipal extends javax.swing.JFrame {
         jpSaque.setMaximumSize(new java.awt.Dimension(840, 60));
         jpSaque.setPreferredSize(new java.awt.Dimension(840, 60));
 
-        lblValorSaque.setFont(lblSaqueDepSenha.getFont());
+        lblValorSaque.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 18)); // NOI18N
         lblValorSaque.setForeground(new java.awt.Color(0, 0, 0));
+        lblValorSaque.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblValorSaque.setText("Valor de saque:");
         lblValorSaque.setPreferredSize(new java.awt.Dimension(160, 24));
         jpSaque.add(lblValorSaque);
+        jpSaque.add(lblSeparador2);
 
         saqueDepValorSaque.setBackground(new java.awt.Color(204, 204, 255));
         saqueDepValorSaque.setFont(saqueDepSenha.getFont());
@@ -384,14 +385,19 @@ public class JPrincipal extends javax.swing.JFrame {
         saldoBtAtualizar1.setFocusable(false);
         jpSaqueDepBotoes.add(saldoBtAtualizar1);
 
-        saldoBtVisualizar1.setBackground(new java.awt.Color(0, 153, 204));
-        saldoBtVisualizar1.setForeground(new java.awt.Color(255, 255, 255));
-        saldoBtVisualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
-        saldoBtVisualizar1.setFocusable(false);
-        saldoBtVisualizar1.setMaximumSize(new java.awt.Dimension(50, 26));
-        saldoBtVisualizar1.setMinimumSize(new java.awt.Dimension(50, 26));
-        saldoBtVisualizar1.setPreferredSize(new java.awt.Dimension(50, 26));
-        jpSaqueDepBotoes.add(saldoBtVisualizar1);
+        saqueDepBtViewSaldo.setBackground(new java.awt.Color(0, 153, 204));
+        saqueDepBtViewSaldo.setForeground(new java.awt.Color(255, 255, 255));
+        saqueDepBtViewSaldo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
+        saqueDepBtViewSaldo.setFocusable(false);
+        saqueDepBtViewSaldo.setMaximumSize(new java.awt.Dimension(50, 26));
+        saqueDepBtViewSaldo.setMinimumSize(new java.awt.Dimension(50, 26));
+        saqueDepBtViewSaldo.setPreferredSize(new java.awt.Dimension(50, 26));
+        saqueDepBtViewSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saqueDepBtViewSaldoActionPerformed(evt);
+            }
+        });
+        jpSaqueDepBotoes.add(saqueDepBtViewSaldo);
 
         saldoBtAtualizar2.setBackground(new java.awt.Color(0, 153, 204));
         saldoBtAtualizar2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
@@ -541,11 +547,16 @@ public class JPrincipal extends javax.swing.JFrame {
 
     private void jpAbasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jpAbasStateChanged
         saldoVisivel = false;
+        saqueSaldoVisivel = false;
         if(janelaIniciada){
-            c.saldoVisualizar(saldoVisivel);
-            saldoBtVisualizar.setSelected(false);
+            c.resetVisualizacoes();
         }
     }//GEN-LAST:event_jpAbasStateChanged
+
+    private void saqueDepBtViewSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saqueDepBtViewSaldoActionPerformed
+        saqueSaldoVisivel = !saqueSaldoVisivel;
+        saqueSaldoVisivel = c.viewSaldoSaqueDeposito(saqueSaldoVisivel);
+    }//GEN-LAST:event_saqueDepBtViewSaldoActionPerformed
 
     public JLabel getLblBemVindo() {
         return lblBemVindo;
@@ -576,19 +587,39 @@ public class JPrincipal extends javax.swing.JFrame {
     public JLabel getSaldoRippleQtd() {
         return saldoRippleQtd;
     }
-
     public JLabel getSaldoRippleValor() {
         return saldoRippleValor;
     }
     public JLabel getSaldoTotalValor() {
         return saldoTotalValor;
     }
+    public boolean isSaldoVisivel() {
+        return saldoVisivel;
+    }
 
+    // Aba Saque Deposito
+    public JLabel getSaqueDepSaldo() {
+        return saqueDepSaldo;
+    }
+    public JPasswordField getSaqueDepSenha() {
+        return saqueDepSenha;
+    }
+    public JTextField getSaqueDepValorDeposito() {
+        return saqueDepValorDeposito;
+    }
+    public JTextField getSaqueDepValorSaque() {
+        return saqueDepValorSaque;
+    }
+    public JToggleButton getSaqueDepBtViewSaldo() {
+        return saqueDepBtViewSaldo;
+    }
+    public boolean isSaqueSaldoVisivel() {
+        return saqueSaldoVisivel;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JTabbedPane jpAbas;
     private javax.swing.JPanel jpCompra;
     private javax.swing.JPanel jpDepSaque;
@@ -614,6 +645,8 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblSaldoTotal;
     private javax.swing.JLabel lblSaqueDepSaldo;
     private javax.swing.JLabel lblSaqueDepSenha;
+    private javax.swing.JLabel lblSeparador1;
+    private javax.swing.JLabel lblSeparador2;
     private javax.swing.JLabel lblTituloDeposito;
     private javax.swing.JLabel lblTituloExtrato;
     private javax.swing.JLabel lblTituloSaldo;
@@ -626,13 +659,13 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton saldoBtAtualizar1;
     private javax.swing.JButton saldoBtAtualizar2;
     private javax.swing.JToggleButton saldoBtVisualizar;
-    private javax.swing.JToggleButton saldoBtVisualizar1;
     private javax.swing.JLabel saldoEtheriumQtd;
     private javax.swing.JLabel saldoEtheriumValor;
     private javax.swing.JLabel saldoRealValor;
     private javax.swing.JLabel saldoRippleQtd;
     private javax.swing.JLabel saldoRippleValor;
     private javax.swing.JLabel saldoTotalValor;
+    private javax.swing.JToggleButton saqueDepBtViewSaldo;
     private javax.swing.JToggleButton saqueDepBtViewSenha;
     private javax.swing.JLabel saqueDepSaldo;
     private javax.swing.JPasswordField saqueDepSenha;
