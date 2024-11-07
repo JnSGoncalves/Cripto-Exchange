@@ -1,13 +1,77 @@
 package view;
 
-public class JCadastro extends javax.swing.JFrame {
+import controller.CCadastro;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
-    /**
-     * Creates new form JLogin
-     */
-    public JCadastro() {
+public class JCadastro extends javax.swing.JFrame {
+    private static JCadastro janelaUnica;
+    private final CCadastro c;
+    private boolean senhaVisivel = false;
+    private boolean confirmSenhaVisivel = false;
+    
+    public static JCadastro getInstance(){
+        if(janelaUnica == null){
+            janelaUnica = new JCadastro();
+        }
+        return janelaUnica;
+    }
+    
+    private JCadastro() {
+        c = new CCadastro(this);
         initComponents();
     }
+
+    public JLabel getLblReport() {
+        return lblReport;
+    }
+
+    public void setLblReport(JLabel lblReport) {
+        this.lblReport = lblReport;
+    }
+
+    public JPasswordField getTxtConfirmSenha() {
+        return txtConfirmSenha;
+    }
+
+    public void setTxtConfirmSenha(JPasswordField txtConfirmSenha) {
+        this.txtConfirmSenha = txtConfirmSenha;
+    }
+
+    public JTextField getTxtCpf() {
+        return txtCpf;
+    }
+
+    public void setTxtCpf(JTextField txtCpf) {
+        this.txtCpf = txtCpf;
+    }
+
+    public JTextField getTxtNome() {
+        return txtNome;
+    }
+
+    public void setTxtNome(JTextField txtNome) {
+        this.txtNome = txtNome;
+    }
+
+    public JPasswordField getTxtSenha() {
+        return txtSenha;
+    }
+
+    public void setTxtSenha(JPasswordField txtSenha) {
+        this.txtSenha = txtSenha;
+    }
+
+    public JTextField getTxtSobrenome() {
+        return txtSobrenome;
+    }
+
+    public void setTxtSobrenome(JTextField txtSobrenome) {
+        this.txtSobrenome = txtSobrenome;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,7 +101,7 @@ public class JCadastro extends javax.swing.JFrame {
         txtConfirmSenha = new javax.swing.JPasswordField();
         btViewConfirmSenha = new javax.swing.JToggleButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cripto Exchange - Cadastro");
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
@@ -54,11 +118,21 @@ public class JCadastro extends javax.swing.JFrame {
         btLogar.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 14)); // NOI18N
         btLogar.setForeground(new java.awt.Color(255, 255, 255));
         btLogar.setText("Logar");
+        btLogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLogarActionPerformed(evt);
+            }
+        });
 
         btCadastrar.setBackground(new java.awt.Color(0, 153, 204));
         btCadastrar.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 14)); // NOI18N
         btCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btCadastrar.setText("Cadastrar");
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
 
         jpDadosCadastro.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -90,6 +164,12 @@ public class JCadastro extends javax.swing.JFrame {
 
         btViewSenha.setBackground(new java.awt.Color(255, 246, 255));
         btViewSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
+        btViewSenha.setFocusable(false);
+        btViewSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btViewSenhaActionPerformed(evt);
+            }
+        });
 
         lblConfirmSenha.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 18)); // NOI18N
         lblConfirmSenha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -112,6 +192,12 @@ public class JCadastro extends javax.swing.JFrame {
 
         btViewConfirmSenha.setBackground(new java.awt.Color(255, 246, 255));
         btViewConfirmSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
+        btViewConfirmSenha.setFocusable(false);
+        btViewConfirmSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btViewConfirmSenhaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpDadosCadastroLayout = new javax.swing.GroupLayout(jpDadosCadastro);
         jpDadosCadastro.setLayout(jpDadosCadastroLayout);
@@ -233,6 +319,24 @@ public class JCadastro extends javax.swing.JFrame {
     private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfActionPerformed
+
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        c.novoInvestidor();
+    }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void btLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogarActionPerformed
+       c.abrirLogin();
+    }//GEN-LAST:event_btLogarActionPerformed
+
+    private void btViewSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btViewSenhaActionPerformed
+        senhaVisivel = !senhaVisivel;
+        c.viewSenha(senhaVisivel);
+    }//GEN-LAST:event_btViewSenhaActionPerformed
+
+    private void btViewConfirmSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btViewConfirmSenhaActionPerformed
+        confirmSenhaVisivel = !confirmSenhaVisivel;
+        c.viewConfirmSenha(confirmSenhaVisivel);
+    }//GEN-LAST:event_btViewConfirmSenhaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,8 +5,8 @@ public class Real extends Moedas implements Tarifacao {
     private final double tarifaVenda = 0;
     private double quantia;
 
-    public Real(double quantia, String nomeMoeda, double valor) {
-        super(nomeMoeda, 0, valor);
+    public Real(double quantia) {
+        super("real", 0);
         this.quantia = quantia;
     }
 

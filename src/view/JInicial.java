@@ -1,11 +1,14 @@
 package view;
 
-public class JInicial extends javax.swing.JFrame {
+import controller.CInicial;
 
-    /**
-     * Creates new form JLogin
-     */
-    public JInicial() {
+public class JInicial extends javax.swing.JFrame {
+    private static JInicial janelaUnica;
+    private final CInicial c;
+
+    private JInicial() {
+        this.c = new CInicial(this);
+        
         initComponents();
     }
 
@@ -55,6 +58,11 @@ public class JInicial extends javax.swing.JFrame {
         btLogar.setMaximumSize(new java.awt.Dimension(100, 30));
         btLogar.setMinimumSize(new java.awt.Dimension(100, 30));
         btLogar.setPreferredSize(new java.awt.Dimension(100, 30));
+        btLogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLogarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
         jpPrincipal.setLayout(jpPrincipalLayout);
@@ -102,8 +110,12 @@ public class JInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        // TODO add your handling code here:
+        c.abrirCadastro();
     }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void btLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogarActionPerformed
+        c.abrirLogin();
+    }//GEN-LAST:event_btLogarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +155,13 @@ public class JInicial extends javax.swing.JFrame {
 //        });
 //    }
 
+    public static JInicial getInstance() {
+        if (janelaUnica == null) {
+            janelaUnica = new JInicial(); // Cria a instância se ainda não existir
+        }
+        return janelaUnica;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btLogar;

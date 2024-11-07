@@ -5,8 +5,8 @@ public class Ripple extends Moedas implements Tarifacao {
     private final double tarifaVenda = 0.01;
     private double quantia;
 
-    public Ripple(double quantia, String nomeMoeda, double valor) {
-        super(nomeMoeda, 1, valor);
+    public Ripple(double quantia) {
+        super("ripple", 1);
         this.quantia = quantia;
     }
 
