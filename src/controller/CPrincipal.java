@@ -7,6 +7,7 @@ import model.user.Investidor;
 import model.funcoes.Consultas;
 import model.funcoes.FuncoesGerais;
 import model.funcoes.SaqueDepFuncoes;
+import view.JLogin;
 import view.JPrincipal;
 
 public class CPrincipal {
@@ -19,6 +20,11 @@ public class CPrincipal {
         this.view.getLblBemVindo().setText("Bem Vindo(a) " + this.inv.getNome()+ "!");
 //        this.view.getLblSaldoCPF().setText("CPF: " + FuncoesGerais.formatCPF(this.inv.getCpf()));
         this.view.getLblSaldoCPF().setText("CPF: " + this.inv.getCpf());
+    }
+    
+    public void sair(){
+        view.dispose();
+        JLogin.getInstance().setVisible(true);
     }
     
     public void resetVisualizacoes(){
