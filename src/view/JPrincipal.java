@@ -83,6 +83,9 @@ public class JPrincipal extends javax.swing.JFrame {
         saqueDepBtViewSenha = new javax.swing.JToggleButton();
         jpCompra = new javax.swing.JPanel();
         jpVenda = new javax.swing.JPanel();
+        jMenuBar = new javax.swing.JMenuBar();
+        jMenu = new javax.swing.JMenu();
+        opcaoSair = new javax.swing.JMenuItem();
 
         jInternalFrame1.setVisible(true);
 
@@ -556,6 +559,27 @@ public class JPrincipal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jMenuBar.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar.setForeground(new java.awt.Color(51, 51, 51));
+
+        jMenu.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu.setText("Menu");
+
+        opcaoSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        opcaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/sair-25x25.png"))); // NOI18N
+        opcaoSair.setText("Sair");
+        opcaoSair.setPreferredSize(new java.awt.Dimension(140, 25));
+        opcaoSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcaoSairActionPerformed(evt);
+            }
+        });
+        jMenu.add(opcaoSair);
+
+        jMenuBar.add(jMenu);
+
+        setJMenuBar(jMenuBar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -605,6 +629,10 @@ public class JPrincipal extends javax.swing.JFrame {
         saqueSenhaVisivel = !saqueSenhaVisivel;
         c.viewSaqueSenha(saqueSenhaVisivel);
     }//GEN-LAST:event_saqueDepBtViewSenhaActionPerformed
+
+    private void opcaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcaoSairActionPerformed
+        c.sair();
+    }//GEN-LAST:event_opcaoSairActionPerformed
 
     public JLabel getLblBemVindo() {
         return lblBemVindo;
@@ -671,6 +699,8 @@ public class JPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JMenu jMenu;
+    private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JTabbedPane jpAbas;
     private javax.swing.JPanel jpCompra;
     private javax.swing.JPanel jpDepSaque;
@@ -705,6 +735,7 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTituloSaque;
     private javax.swing.JLabel lblValorDeposito;
     private javax.swing.JLabel lblValorSaque;
+    private javax.swing.JMenuItem opcaoSair;
     private javax.swing.JLabel saldoBitcoinQtd;
     private javax.swing.JLabel saldoBitcoinValor;
     private javax.swing.JButton saldoBtAtualizar;
