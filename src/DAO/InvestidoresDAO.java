@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import model.moedas.Carteira;
 import model.user.Investidor;
 
 public class InvestidoresDAO {
@@ -75,6 +76,24 @@ public class InvestidoresDAO {
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.execute();
+        conn.close();
+    }
+    
+    public void updateCarteira(Investidor inv) throws SQLException{
+        Carteira carteira = inv.getCarteira();
+        
+        String sql = "update investidores set real = ?, bitcoin = ?, ethereum = ?, ripple = ? where id = ?";
+        
+        PreparedStatement statemant = conn.prepareStatement(sql);
+        
+        statemant.setDouble(1, carteira.getReal().getQuantia());
+        statemant.setDouble(2, carteira.getBitcoin().getQuantia());
+        statemant.setDouble(3, carteira.getEthereum().getQuantia());
+        statemant.setDouble(4, carteira.getRipple().getQuantia());
+        
+        statemant.setInt(5, inv.getId());
+        
+        statemant.execute();
         conn.close();
     }
 }

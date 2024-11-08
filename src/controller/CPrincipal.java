@@ -5,6 +5,7 @@ import javax.swing.JPasswordField;
 import model.funcoes.SaldoFuncoes;
 import model.user.Investidor;
 import model.funcoes.Consultas;
+import model.funcoes.FuncoesGerais;
 import model.funcoes.SaqueDepFuncoes;
 import view.JPrincipal;
 
@@ -16,6 +17,8 @@ public class CPrincipal {
         this.inv = inv;
         this.view = view;
         this.view.getLblBemVindo().setText("Bem Vindo(a) " + this.inv.getNome()+ "!");
+//        this.view.getLblSaldoCPF().setText("CPF: " + FuncoesGerais.formatCPF(this.inv.getCpf()));
+        this.view.getLblSaldoCPF().setText("CPF: " + this.inv.getCpf());
     }
     
     public void resetVisualizacoes(){
@@ -28,7 +31,7 @@ public class CPrincipal {
     // Aba Saldo
     public boolean saldoVisualizar(boolean saldoVisivel) {
         if(saldoVisivel){
-            if(optionFrameVerificacaoSenha()){
+            if(FuncoesGerais.verificacaoSenha(view, inv)){
                 inv.setCarteira(Consultas.getCarteira(inv.getId()));
                 SaldoFuncoes.verSaldo(view, saldoVisivel, inv.getCarteira());
                 return true;
@@ -54,7 +57,7 @@ public class CPrincipal {
     // Aba Saque e Deposito
     public boolean viewSaldoSaqueDeposito(boolean saldoVisivel){
         if(saldoVisivel){
-            if(optionFrameVerificacaoSenha()){
+            if(FuncoesGerais.verificacaoSenha(view, inv)){
                 inv.setCarteira(Consultas.getCarteira(inv.getId()));
                 SaqueDepFuncoes.verSaldo(view, saldoVisivel, inv.getCarteira());
                 return true;
@@ -68,29 +71,67 @@ public class CPrincipal {
         }
     }
     
-    
-    public boolean optionFrameVerificacaoSenha(){
-        javax.swing.JPanel panel = new javax.swing.JPanel();
-        JPasswordField passwordField = new JPasswordField(20);
-        panel.add(passwordField);
-
-        int option = JOptionPane.showConfirmDialog(view, panel, "Digite sua senha", 
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-        if (option == JOptionPane.OK_OPTION) {
-            // Obtém a senha digitada (em formato de array de caracteres)
-            char[] password = passwordField.getPassword();
-            String senha = new String(password);
-            java.util.Arrays.fill(password, '\u0000');
-
-            if(Consultas.verSenha(inv.getId(), senha)){
-                return true;
-            }else{
-                JOptionPane.showMessageDialog(view, "Senha incorreta!",
-                    "Erro", JOptionPane.ERROR_MESSAGE);
-                return false;
+    public void depositar(){
+        try{
+            String valorString = view.getSaqueDepValorDeposito().getText();
+            
+            if(valorString.isBlank()){
+                throw new IllegalArgumentException("Nenhum valor identificado!");
             }
+            
+            valorString = valorString.replace(",", ".");
+            double valor = Double.parseDouble(valorString);
+            
+            if(!FuncoesGerais.verfiValor(valor)){
+                throw new IllegalArgumentException("Valor inválido!");
+            }
+            
+            SaqueDepFuncoes.depositar(view, inv, valor);
+            SaqueDepFuncoes.verSaldo(view, view.isSaqueSaldoVisivel(), inv.getCarteira());
+            
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(view, "Digite apenas números!",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }catch(IllegalArgumentException e){
+            JOptionPane.showMessageDialog(view, e.getMessage(),
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void sacar(){
+        try{
+            String valorString = view.getSaqueDepValorSaque().getText();
+            
+            if(valorString.isBlank()){
+                throw new IllegalArgumentException("Nenhum valor identificado!");
+            }
+            
+            valorString = valorString.replace(",", ".");
+            double valor = Double.parseDouble(valorString);
+            
+            if(!FuncoesGerais.verfiValor(valor)){
+                throw new IllegalArgumentException("Valor inválido!");
+            }
+            
+            if(FuncoesGerais.verificacaoSenha(view.getSaqueDepSenha(),view, inv)){
+                SaqueDepFuncoes.sacar(view, inv, valor);
+                SaqueDepFuncoes.verSaldo(view, view.isSaqueSaldoVisivel(), inv.getCarteira());
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(view, "Digite apenas números!",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }catch(IllegalArgumentException e){
+            JOptionPane.showMessageDialog(view, e.getMessage(),
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void viewSaqueSenha(boolean visible) {
+        JPasswordField txtSenha = view.getSaqueDepSenha();
+        if(visible){
+            txtSenha.setEchoChar('\0');
         }else{
-            return false;
+            txtSenha.setEchoChar('•');
         }
     }
 }

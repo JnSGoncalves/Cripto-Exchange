@@ -22,15 +22,16 @@ public class CCadastro {
         try{
             String nome = view.getTxtNome().getText();
             String sobrenome = view.getTxtSobrenome().getText();
+            // Necessária implementação de verificação do CPF para só deixar passar 11 números inteiros
             String cpf = view.getTxtCpf().getText();
+            // Necessária implementação de verificação da senha para só deixar passar senha de 6 dígitos numéricos
             String senha = view.getTxtSenha().getText();
             String confirmSenha = view.getTxtConfirmSenha().getText();
             
-            if(nome.isEmpty() || sobrenome.isEmpty() || cpf.isEmpty() || senha.isEmpty() || confirmSenha.isEmpty()){
+            if(nome.isBlank()|| sobrenome.isBlank() || cpf.isBlank() || senha.isBlank() || confirmSenha.isBlank()){
                 throw new IllegalArgumentException("Preencha todos os campos");
             }
             
-            // Necessária implementação de verificação do CPF para só deixar passar 11 números inteiros
             
             Conexao conexao = new Conexao();
             

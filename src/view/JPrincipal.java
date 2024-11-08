@@ -12,6 +12,7 @@ public class JPrincipal extends javax.swing.JFrame {
     private CPrincipal c;
     private boolean saldoVisivel = false;
     private boolean saqueSaldoVisivel = false;
+    private boolean saqueSenhaVisivel = false;
     private boolean janelaIniciada = false;
     
     public JPrincipal(Investidor inv) {
@@ -54,6 +55,7 @@ public class JPrincipal extends javax.swing.JFrame {
         jpSaldoBotoes = new javax.swing.JPanel();
         saldoBtAtualizar = new javax.swing.JButton();
         saldoBtVisualizar = new javax.swing.JToggleButton();
+        lblSaldoCPF = new javax.swing.JLabel();
         jpScrollExtrato = new javax.swing.JScrollPane();
         jpExtrato = new javax.swing.JPanel();
         lblTituloExtrato = new javax.swing.JLabel();
@@ -69,9 +71,9 @@ public class JPrincipal extends javax.swing.JFrame {
         lblSeparador2 = new javax.swing.JLabel();
         saqueDepValorSaque = new javax.swing.JTextField();
         jpSaqueDepBotoes = new javax.swing.JPanel();
-        saldoBtAtualizar1 = new javax.swing.JButton();
+        saqueDepBtDepositar = new javax.swing.JButton();
         saqueDepBtViewSaldo = new javax.swing.JToggleButton();
-        saldoBtAtualizar2 = new javax.swing.JButton();
+        saqueDepBtSacar = new javax.swing.JButton();
         jpSaqueDepSaldoAtual = new javax.swing.JPanel();
         lblSaqueDepSaldo = new javax.swing.JLabel();
         saqueDepSaldo = new javax.swing.JLabel();
@@ -237,8 +239,9 @@ public class JPrincipal extends javax.swing.JFrame {
         jpValoresSaldoLayout.setVerticalGroup(
             jpValoresSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpValoresSaldoLayout.createSequentialGroup()
-                .addComponent(jpSaldoReal, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addContainerGap()
+                .addComponent(jpSaldoReal, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpSaldoCriptos, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -270,6 +273,11 @@ public class JPrincipal extends javax.swing.JFrame {
         });
         jpSaldoBotoes.add(saldoBtVisualizar);
 
+        lblSaldoCPF.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        lblSaldoCPF.setForeground(new java.awt.Color(0, 102, 102));
+        lblSaldoCPF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSaldoCPF.setText("CPF: XXX.XXX.XXX-XX");
+
         javax.swing.GroupLayout jpSaldoLayout = new javax.swing.GroupLayout(jpSaldo);
         jpSaldo.setLayout(jpSaldoLayout);
         jpSaldoLayout.setHorizontalGroup(
@@ -277,20 +285,26 @@ public class JPrincipal extends javax.swing.JFrame {
             .addComponent(lblTituloSaldo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jpValoresSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblBemVindo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jpSaldoBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jpSaldoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jpSaldoBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(lblSaldoCPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpSaldoLayout.setVerticalGroup(
             jpSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpSaldoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTituloSaldo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblBemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSaldoCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jpSaldoBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpValoresSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addComponent(jpValoresSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpAbas.addTab("Saldo", null, jpSaldo, "");
@@ -350,10 +364,12 @@ public class JPrincipal extends javax.swing.JFrame {
         jpDeposito.add(lblValorDeposito);
 
         lblSeparador1.setFont(lblSaqueDepSenha.getFont());
+        lblSeparador1.setForeground(new java.awt.Color(0, 0, 0));
+        lblSeparador1.setText("R$");
         jpDeposito.add(lblSeparador1);
 
         saqueDepValorDeposito.setBackground(new java.awt.Color(204, 204, 255));
-        saqueDepValorDeposito.setFont(saqueDepSenha.getFont());
+        saqueDepValorDeposito.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 18)); // NOI18N
         saqueDepValorDeposito.setForeground(new java.awt.Color(0, 0, 0));
         saqueDepValorDeposito.setPreferredSize(new java.awt.Dimension(250, 30));
         jpDeposito.add(saqueDepValorDeposito);
@@ -368,22 +384,31 @@ public class JPrincipal extends javax.swing.JFrame {
         lblValorSaque.setText("Valor de saque:");
         lblValorSaque.setPreferredSize(new java.awt.Dimension(160, 24));
         jpSaque.add(lblValorSaque);
+
+        lblSeparador2.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 18)); // NOI18N
+        lblSeparador2.setForeground(new java.awt.Color(0, 0, 0));
+        lblSeparador2.setText("R$");
         jpSaque.add(lblSeparador2);
 
         saqueDepValorSaque.setBackground(new java.awt.Color(204, 204, 255));
-        saqueDepValorSaque.setFont(saqueDepSenha.getFont());
+        saqueDepValorSaque.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 24)); // NOI18N
         saqueDepValorSaque.setForeground(new java.awt.Color(0, 0, 0));
         saqueDepValorSaque.setPreferredSize(new java.awt.Dimension(250, 30));
         jpSaque.add(saqueDepValorSaque);
 
         jpSaqueDepBotoes.setBackground(new java.awt.Color(255, 255, 255));
 
-        saldoBtAtualizar1.setBackground(new java.awt.Color(0, 153, 204));
-        saldoBtAtualizar1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
-        saldoBtAtualizar1.setForeground(new java.awt.Color(255, 255, 255));
-        saldoBtAtualizar1.setText("Depositar");
-        saldoBtAtualizar1.setFocusable(false);
-        jpSaqueDepBotoes.add(saldoBtAtualizar1);
+        saqueDepBtDepositar.setBackground(new java.awt.Color(0, 153, 204));
+        saqueDepBtDepositar.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        saqueDepBtDepositar.setForeground(new java.awt.Color(255, 255, 255));
+        saqueDepBtDepositar.setText("Depositar");
+        saqueDepBtDepositar.setFocusable(false);
+        saqueDepBtDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saqueDepBtDepositarActionPerformed(evt);
+            }
+        });
+        jpSaqueDepBotoes.add(saqueDepBtDepositar);
 
         saqueDepBtViewSaldo.setBackground(new java.awt.Color(0, 153, 204));
         saqueDepBtViewSaldo.setForeground(new java.awt.Color(255, 255, 255));
@@ -399,15 +424,20 @@ public class JPrincipal extends javax.swing.JFrame {
         });
         jpSaqueDepBotoes.add(saqueDepBtViewSaldo);
 
-        saldoBtAtualizar2.setBackground(new java.awt.Color(0, 153, 204));
-        saldoBtAtualizar2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
-        saldoBtAtualizar2.setForeground(new java.awt.Color(255, 255, 255));
-        saldoBtAtualizar2.setText("Sacar");
-        saldoBtAtualizar2.setFocusable(false);
-        saldoBtAtualizar2.setMaximumSize(new java.awt.Dimension(100, 26));
-        saldoBtAtualizar2.setMinimumSize(new java.awt.Dimension(100, 26));
-        saldoBtAtualizar2.setPreferredSize(new java.awt.Dimension(100, 26));
-        jpSaqueDepBotoes.add(saldoBtAtualizar2);
+        saqueDepBtSacar.setBackground(new java.awt.Color(0, 153, 204));
+        saqueDepBtSacar.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        saqueDepBtSacar.setForeground(new java.awt.Color(255, 255, 255));
+        saqueDepBtSacar.setText("Sacar");
+        saqueDepBtSacar.setFocusable(false);
+        saqueDepBtSacar.setMaximumSize(new java.awt.Dimension(100, 26));
+        saqueDepBtSacar.setMinimumSize(new java.awt.Dimension(100, 26));
+        saqueDepBtSacar.setPreferredSize(new java.awt.Dimension(100, 26));
+        saqueDepBtSacar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saqueDepBtSacarActionPerformed(evt);
+            }
+        });
+        jpSaqueDepBotoes.add(saqueDepBtSacar);
 
         jpSaqueDepSaldoAtual.setBackground(new java.awt.Color(255, 255, 255));
         jpSaqueDepSaldoAtual.setLayout(new java.awt.GridLayout(1, 2));
@@ -446,6 +476,11 @@ public class JPrincipal extends javax.swing.JFrame {
         saqueDepBtViewSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/olho-25x25.png"))); // NOI18N
         saqueDepBtViewSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         saqueDepBtViewSenha.setFocusable(false);
+        saqueDepBtViewSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saqueDepBtViewSenhaActionPerformed(evt);
+            }
+        });
         jpSaqDepSenha.add(saqueDepBtViewSenha);
 
         javax.swing.GroupLayout jpDepSaqueLayout = new javax.swing.GroupLayout(jpDepSaque);
@@ -558,8 +593,24 @@ public class JPrincipal extends javax.swing.JFrame {
         saqueSaldoVisivel = c.viewSaldoSaqueDeposito(saqueSaldoVisivel);
     }//GEN-LAST:event_saqueDepBtViewSaldoActionPerformed
 
+    private void saqueDepBtDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saqueDepBtDepositarActionPerformed
+        c.depositar();
+    }//GEN-LAST:event_saqueDepBtDepositarActionPerformed
+
+    private void saqueDepBtSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saqueDepBtSacarActionPerformed
+        c.sacar();
+    }//GEN-LAST:event_saqueDepBtSacarActionPerformed
+
+    private void saqueDepBtViewSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saqueDepBtViewSenhaActionPerformed
+        saqueSenhaVisivel = !saqueSenhaVisivel;
+        c.viewSaqueSenha(saqueSenhaVisivel);
+    }//GEN-LAST:event_saqueDepBtViewSenhaActionPerformed
+
     public JLabel getLblBemVindo() {
         return lblBemVindo;
+    }
+    public JLabel getLblSaldoCPF() {
+        return lblSaldoCPF;
     }
     
     // Gets Aba Saldo
@@ -639,6 +690,7 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jpVenda;
     private javax.swing.JLabel lblBemVindo;
     private javax.swing.JLabel lblSaldoBitcoin;
+    private javax.swing.JLabel lblSaldoCPF;
     private javax.swing.JLabel lblSaldoEtherium;
     private javax.swing.JLabel lblSaldoReal;
     private javax.swing.JLabel lblSaldoRipple;
@@ -656,8 +708,6 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel saldoBitcoinQtd;
     private javax.swing.JLabel saldoBitcoinValor;
     private javax.swing.JButton saldoBtAtualizar;
-    private javax.swing.JButton saldoBtAtualizar1;
-    private javax.swing.JButton saldoBtAtualizar2;
     private javax.swing.JToggleButton saldoBtVisualizar;
     private javax.swing.JLabel saldoEtheriumQtd;
     private javax.swing.JLabel saldoEtheriumValor;
@@ -665,6 +715,8 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel saldoRippleQtd;
     private javax.swing.JLabel saldoRippleValor;
     private javax.swing.JLabel saldoTotalValor;
+    private javax.swing.JButton saqueDepBtDepositar;
+    private javax.swing.JButton saqueDepBtSacar;
     private javax.swing.JToggleButton saqueDepBtViewSaldo;
     private javax.swing.JToggleButton saqueDepBtViewSenha;
     private javax.swing.JLabel saqueDepSaldo;

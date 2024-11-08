@@ -3,11 +3,9 @@ package model.moedas;
 public class Bitcoin extends Moedas implements Tarifacao {
     private final double tarifaCompra = 0.02;
     private final double tarifaVenda = 0.03;
-    private double quantia;
 
     public Bitcoin(double quantia) {
-        super("bitcoin", 1);
-        this.quantia = quantia;
+        super("bitcoin", 1, quantia);
     }
 
     @Override
@@ -19,13 +17,4 @@ public class Bitcoin extends Moedas implements Tarifacao {
     public double taxaDeVenda(double valor){
         return tarifaVenda * valor;
     }
-
-    public double getQuantia() {
-        return quantia;
-    }
-    public void setQuantia(double quantia) {
-        this.quantia = quantia;
-    }
-    
-    
 }
