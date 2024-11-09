@@ -26,7 +26,7 @@ public class Consultas {
                     return 0;
                 }
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Erro de conexão!",
+            JOptionPane.showMessageDialog(null, "Erro de conexão!\nPor favor, reinicie a aplicação.",
                     "Erro", JOptionPane.ERROR_MESSAGE);
             return 0;
         }
