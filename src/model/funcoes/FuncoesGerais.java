@@ -13,6 +13,10 @@ public class FuncoesGerais {
                cpf.substring(9, 11);
     }
     
+    public static boolean somenteDigitos(String str){
+        return str != null && str.matches("\\d+");
+    }
+    
     public static boolean verificacaoSenha(JPrincipal view, Investidor inv){
         javax.swing.JPanel panel = new javax.swing.JPanel();
         JPasswordField passwordField = new JPasswordField(20);

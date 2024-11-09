@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import model.funcoes.FuncoesGerais;
 import model.user.Investidor;
 import view.JCadastro;
 import view.JLogin;
@@ -22,9 +23,7 @@ public class CCadastro {
         try{
             String nome = view.getTxtNome().getText();
             String sobrenome = view.getTxtSobrenome().getText();
-            // Necessária implementação de verificação do CPF para só deixar passar 11 números inteiros
             String cpf = view.getTxtCpf().getText();
-            // Necessária implementação de verificação da senha para só deixar passar senha de 6 dígitos numéricos
             String senha = view.getTxtSenha().getText();
             String confirmSenha = view.getTxtConfirmSenha().getText();
             
@@ -32,6 +31,13 @@ public class CCadastro {
                 throw new IllegalArgumentException("Preencha todos os campos");
             }
             
+            
+            if(!FuncoesGerais.somenteDigitos(cpf) || cpf.length() != 11) {
+                throw new IllegalArgumentException("Digite um CPF válido");
+            }
+            if(!FuncoesGerais.somenteDigitos(senha) || senha.length() != 6){
+                throw new IllegalArgumentException("A senha deve conter 6 digitos numérios");
+            }
             
             Conexao conexao = new Conexao();
             
