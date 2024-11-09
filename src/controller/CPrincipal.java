@@ -8,6 +8,7 @@ import model.user.Investidor;
 import model.funcoes.Consultas;
 import model.funcoes.FuncoesGerais;
 import model.funcoes.SaqueDepFuncoes;
+import model.funcoes.VendaFuncoes;
 import view.JLogin;
 import view.JPrincipal;
 
@@ -15,6 +16,7 @@ public class CPrincipal {
     private final Investidor inv;
     private final JPrincipal view;
     private CompraFuncoes compraFuncoes;
+    private VendaFuncoes vendaFuncoes;
 
     public CPrincipal(JPrincipal view, Investidor inv) {
         this.inv = inv;
@@ -24,6 +26,7 @@ public class CPrincipal {
         this.view.getLblSaldoCPF().setText("CPF: " + this.inv.getCpf());
         
         compraFuncoes = new CompraFuncoes();
+        vendaFuncoes = new VendaFuncoes();
         atualizarCotacoes();
     }
     
@@ -39,6 +42,8 @@ public class CPrincipal {
         view.getSaqueDepBtViewSaldo().setSelected(false);
         viewSaldoCompra(view.isCompraSaldoVisivel());
         view.getCompraBtViewSaldo().setSelected(false);
+        viewSaldoVenda(view.isVendaSaldoVisivel());
+        view.getVendaBtViewSaldo().setSelected(false);
     }
     
     public void atualizarCotacoes(){
@@ -46,9 +51,131 @@ public class CPrincipal {
         double cotaEthereum = Consultas.getValor(2);
         double cotaRipple = Consultas.getValor(3);
         
-        view.getCompraCotacaoBitcoin().setText("Cotação: R$ " + SaldoFuncoes.formatoValor.format(cotaBitcoin));
-        view.getCompraCotacaoEthereum().setText("Cotação: R$ " + SaldoFuncoes.formatoValor.format(cotaEthereum));
-        view.getCompraCotacaoRipple().setText("Cotação: R$ " + SaldoFuncoes.formatoValor.format(cotaRipple));
+        view.getCompraCotacaoBitcoin().setText("Cotação: " + SaldoFuncoes.formatoValor.format(cotaBitcoin));
+        view.getCompraCotacaoEthereum().setText("Cotação: " + SaldoFuncoes.formatoValor.format(cotaEthereum));
+        view.getCompraCotacaoRipple().setText("Cotação: " + SaldoFuncoes.formatoValor.format(cotaRipple));
+        
+        view.getVendaCotacaoBitcoin().setText("Cotação: " + SaldoFuncoes.formatoValor.format(cotaBitcoin));
+        view.getVendaCotacaoEthereum().setText("Cotação: " + SaldoFuncoes.formatoValor.format(cotaEthereum));
+        view.getVendaCotacaoRipple().setText("Cotação: " + SaldoFuncoes.formatoValor.format(cotaRipple));
+    }
+    
+    // Aba Venda
+    // Possivel adição de uma visualização da taxa antes mesmo do click em comprar
+    public void venda(){
+        try{
+            String qtdString = view.getVendaQtd().getText();
+            
+            if(qtdString.isBlank()){
+                throw new IllegalArgumentException("Nenhum valor identificado!");
+            }
+            
+            int idMoeda;
+            
+            if(view.getVendaBtBitcoin().isSelected()){
+                idMoeda = 1;
+            }else if(view.getVendaBtEthereum().isSelected()){
+                idMoeda = 2;
+            }else if(view.getVendaBtRipple().isSelected()){
+                idMoeda = 3;
+            }else{
+                throw new IllegalArgumentException("Nenhuma moeda Selecionada");
+            }
+            
+            qtdString = qtdString.replace(",", ".");
+            double qtd = Double.parseDouble(qtdString);
+            
+            if(FuncoesGerais.verificacaoSenha(view, inv)){
+                vendaFuncoes.venda(view, inv, qtd, idMoeda);
+                vendaFuncoes.verSaldo(view, view.isVendaSaldoVisivel(), inv.getCarteira());
+            }
+            
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(view, "Digite apenas números!",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }catch(IllegalArgumentException e){
+            JOptionPane.showMessageDialog(view, e.getMessage(),
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void vendaQtdEmValor(){
+        try{
+            String qtdString = view.getVendaQtd().getText();
+            if(qtdString.isBlank()){
+                view.getVendaValorReais().setText("");
+            }
+
+            int idMoeda;
+
+            if(view.getVendaBtBitcoin().isSelected()){
+                idMoeda = 1;
+            }else if(view.getVendaBtEthereum().isSelected()){
+                idMoeda = 2;
+            }else if(view.getVendaBtRipple().isSelected()){
+                idMoeda = 3;
+            }else{
+                throw new IllegalArgumentException("Nenhuma moeda Selecionada");
+            }
+            
+            qtdString = qtdString.replace(",", ".");
+            double qtd = Double.parseDouble(qtdString);
+            
+            double valor = qtd * Consultas.getValor(idMoeda);
+            valor = Math.round(valor * 100.0) / 100.0;
+
+            view.getVendaValorReais().setText(String.format("%.2f", valor));
+            
+        }catch(Exception e){
+            return;
+        }        
+    }
+    
+    public void vendaValorEmQtd(){
+        try{
+            String valorString = view.getVendaValorReais().getText();
+            if(valorString.isBlank()){
+                view.getVendaValorReais().setText("");
+            }
+
+            int idMoeda;
+
+            if(view.getVendaBtBitcoin().isSelected()){
+                idMoeda = 1;
+            }else if(view.getVendaBtEthereum().isSelected()){
+                idMoeda = 2;
+            }else if(view.getVendaBtRipple().isSelected()){
+                idMoeda = 3;
+            }else{
+                throw new IllegalArgumentException("Nenhuma moeda Selecionada");
+            }
+            
+            valorString = valorString.replace(",", ".");
+            double valor = Double.parseDouble(valorString);
+            
+            double qtd = valor / Consultas.getValor(idMoeda);
+
+            view.getVendaQtd().setText(Double.toString(qtd));
+            
+        }catch(Exception e){
+            return;
+        }        
+    }
+    
+    public boolean viewSaldoVenda(boolean saldoVisivel){
+        if(saldoVisivel){
+            if(FuncoesGerais.verificacaoSenha(view, inv)){
+                inv.setCarteira(Consultas.getCarteira(inv.getId()));
+                vendaFuncoes.verSaldo(view, saldoVisivel, inv.getCarteira());
+                return true;
+            }else{
+                view.getVendaBtViewSaldo().setSelected(false);
+                return false;
+            }
+        }else{
+            vendaFuncoes.verSaldo(view, saldoVisivel, inv.getCarteira());
+            return false;
+        }
     }
     
     // Aba Compra
@@ -78,7 +205,7 @@ public class CPrincipal {
             
             if(FuncoesGerais.verificacaoSenha(view, inv)){
                 compraFuncoes.compra(view, inv, qtd, idMoeda);
-                compraFuncoes.verSaldo(view, view.isSaqueSaldoVisivel(), inv.getCarteira());
+                compraFuncoes.verSaldo(view, view.isCompraSaldoVisivel(), inv.getCarteira());
             }
             
         }catch(NumberFormatException e){
@@ -160,7 +287,7 @@ public class CPrincipal {
                 compraFuncoes.verSaldo(view, saldoVisivel, inv.getCarteira());
                 return true;
             }else{
-                view.getSaqueDepBtViewSaldo().setSelected(false);
+                view.getCompraBtViewSaldo().setSelected(false);
                 return false;
             }
         }else{

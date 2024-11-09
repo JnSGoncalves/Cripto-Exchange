@@ -862,13 +862,13 @@
                         <Property name="text" type="java.lang.String" value="Depositar"/>
                         <Property name="focusable" type="boolean" value="false"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[100, 30]"/>
+                          <Dimension value="[110, 30]"/>
                         </Property>
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[100, 30]"/>
+                          <Dimension value="[110, 30]"/>
                         </Property>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[100, 30]"/>
+                          <Dimension value="[110, 30]"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -915,13 +915,13 @@
                         <Property name="text" type="java.lang.String" value="Sacar"/>
                         <Property name="focusable" type="boolean" value="false"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[100, 30]"/>
+                          <Dimension value="[110, 30]"/>
                         </Property>
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[100, 30]"/>
+                          <Dimension value="[110, 30]"/>
                         </Property>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[100, 30]"/>
+                          <Dimension value="[110, 30]"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -1608,7 +1608,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jlSeparador9">
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="vendaBtBitcoin1">
+                        <Component class="javax.swing.JRadioButton" name="vendaBtBitcoin">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1628,15 +1628,12 @@
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="2"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="vendaBtBitcoin1MouseClicked"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jlSeparador10">
                         </Component>
                         <Component class="javax.swing.JLabel" name="jlSeparador11">
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="vendaBtEthereum1">
+                        <Component class="javax.swing.JRadioButton" name="vendaBtEthereum">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1656,15 +1653,12 @@
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="2"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="vendaBtEthereum1MouseClicked"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jlSeparador12">
                         </Component>
                         <Component class="javax.swing.JLabel" name="jlSeparador13">
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="vendaBtRipple1">
+                        <Component class="javax.swing.JRadioButton" name="vendaBtRipple">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1684,9 +1678,6 @@
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="2"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="vendaBtRipple1MouseClicked"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jlSeparador14">
                         </Component>
@@ -1704,7 +1695,7 @@
                         <Property name="rows" type="int" value="3"/>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JLabel" name="compraCotacaoBitcoin1">
+                        <Component class="javax.swing.JLabel" name="vendaCotacaoBitcoin">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Microsoft YaHei UI" size="18" style="1"/>
@@ -1721,7 +1712,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="compraCotacaoEthereum1">
+                        <Component class="javax.swing.JLabel" name="vendaCotacaoEthereum">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Microsoft YaHei UI" size="18" style="1"/>
@@ -1738,7 +1729,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="compraCotacaoRipple1">
+                        <Component class="javax.swing.JLabel" name="vendaCotacaoRipple">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Microsoft YaHei UI" size="18" style="1"/>
