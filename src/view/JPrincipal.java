@@ -153,6 +153,7 @@ public class JPrincipal extends javax.swing.JFrame {
         vendaBt = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
+        opcaoAtualizarCotacao = new javax.swing.JMenuItem();
         opcaoSair = new javax.swing.JMenuItem();
 
         jInternalFrame1.setVisible(true);
@@ -1056,10 +1057,20 @@ public class JPrincipal extends javax.swing.JFrame {
         jMenu.setForeground(new java.awt.Color(255, 255, 255));
         jMenu.setText("Menu");
 
+        opcaoAtualizarCotacao.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        opcaoAtualizarCotacao.setText("Atualizar Cotação");
+        opcaoAtualizarCotacao.setPreferredSize(new java.awt.Dimension(220, 25));
+        opcaoAtualizarCotacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcaoAtualizarCotacaoActionPerformed(evt);
+            }
+        });
+        jMenu.add(opcaoAtualizarCotacao);
+
         opcaoSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         opcaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/sair-25x25.png"))); // NOI18N
         opcaoSair.setText("Sair");
-        opcaoSair.setPreferredSize(new java.awt.Dimension(140, 25));
+        opcaoSair.setPreferredSize(new java.awt.Dimension(220, 25));
         opcaoSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcaoSairActionPerformed(evt);
@@ -1184,6 +1195,10 @@ public class JPrincipal extends javax.swing.JFrame {
     private void vendaBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtActionPerformed
         c.venda();
     }//GEN-LAST:event_vendaBtActionPerformed
+
+    private void opcaoAtualizarCotacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcaoAtualizarCotacaoActionPerformed
+        c.atualizarCotacao();
+    }//GEN-LAST:event_opcaoAtualizarCotacaoActionPerformed
 
     public JLabel getLblBemVindo() {
         return lblBemVindo;
@@ -1416,6 +1431,7 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblVendaQtd;
     private javax.swing.JLabel lblVendaSaldo;
     private javax.swing.JLabel lblVendaValor;
+    private javax.swing.JMenuItem opcaoAtualizarCotacao;
     private javax.swing.JMenuItem opcaoSair;
     private javax.swing.JLabel saldoBitcoinQtd;
     private javax.swing.JLabel saldoBitcoinValor;
