@@ -109,6 +109,8 @@ public class CompraFuncoes {
 
                 dao.updateCarteira(inv);
 
+                ExtratoFuncoes.newExtrato(inv, "+", qtd, moeda, cotacao, taxa);
+                
                 JOptionPane.showMessageDialog(view, "Compra realizada com sucesso!",
                         "Saque", JOptionPane.INFORMATION_MESSAGE);
             

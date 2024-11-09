@@ -11,6 +11,7 @@ import model.funcoes.CompraFuncoes;
 import model.funcoes.SaldoFuncoes;
 import model.user.Investidor;
 import model.funcoes.Consultas;
+import model.funcoes.ExtratoFuncoes;
 import model.funcoes.FuncoesGerais;
 import model.funcoes.SaqueDepFuncoes;
 import model.funcoes.VendaFuncoes;
@@ -27,8 +28,7 @@ public class CPrincipal {
         this.inv = inv;
         this.view = view;
         this.view.getLblBemVindo().setText("Bem Vindo(a) " + this.inv.getNome()+ "!");
-//        this.view.getLblSaldoCPF().setText("CPF: " + FuncoesGerais.formatCPF(this.inv.getCpf()));
-        this.view.getLblSaldoCPF().setText("CPF: " + this.inv.getCpf());
+        this.view.getLblSaldoCPF().setText("CPF: " + FuncoesGerais.formatCPF(this.inv.getCpf()));
         
         compraFuncoes = new CompraFuncoes();
         vendaFuncoes = new VendaFuncoes();
@@ -81,6 +81,8 @@ public class CPrincipal {
         view.getCompraBtViewSaldo().setSelected(false);
         viewSaldoVenda(view.isVendaSaldoVisivel());
         view.getVendaBtViewSaldo().setSelected(false);
+        
+        view.getExtratoTxtArea().setText("");
     }
     
     public void atualizarFramesCotacoes(){
@@ -95,6 +97,13 @@ public class CPrincipal {
         view.getVendaCotacaoBitcoin().setText("Cotação: " + SaldoFuncoes.formatoValor.format(cotaBitcoin));
         view.getVendaCotacaoEthereum().setText("Cotação: " + SaldoFuncoes.formatoValor.format(cotaEthereum));
         view.getVendaCotacaoRipple().setText("Cotação: " + SaldoFuncoes.formatoValor.format(cotaRipple));
+    }
+    
+    // Aba Extrato
+    public void verExtrato(){
+        if(FuncoesGerais.verificacaoSenha(view, inv)){
+            ExtratoFuncoes.viewExtrato(view, inv);
+        }
     }
     
     // Aba Venda
@@ -123,7 +132,7 @@ public class CPrincipal {
             double qtd = Double.parseDouble(qtdString);
             
             if(FuncoesGerais.verificacaoSenha(view, inv)){
-                vendaFuncoes.venda(view, inv, qtd, idMoeda);
+                vendaFuncoes.venda(view, inv, qtd, idMoeda);                
                 vendaFuncoes.verSaldo(view, view.isVendaSaldoVisivel(), inv.getCarteira());
             }
             

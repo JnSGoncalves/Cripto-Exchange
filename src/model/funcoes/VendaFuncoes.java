@@ -120,6 +120,8 @@ public class VendaFuncoes {
 
                 dao.updateCarteira(inv);
 
+                ExtratoFuncoes.newExtrato(inv, "-", qtd, moeda, cotacao, taxa);
+                
                 JOptionPane.showMessageDialog(view, "Venda realizada com sucesso!",
                         "Saque", JOptionPane.INFORMATION_MESSAGE);
                 
