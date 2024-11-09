@@ -1,7 +1,12 @@
 package controller;
 
+import DAO.Conexao;
+import DAO.MoedasDAO;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.util.Random;
 import model.funcoes.CompraFuncoes;
 import model.funcoes.SaldoFuncoes;
 import model.user.Investidor;
@@ -27,12 +32,44 @@ public class CPrincipal {
         
         compraFuncoes = new CompraFuncoes();
         vendaFuncoes = new VendaFuncoes();
-        atualizarCotacoes();
+        atualizarFramesCotacoes();
     }
     
     public void sair(){
         view.dispose();
         JLogin.getInstance().setVisible(true);
+    }
+    
+    public void atualizarCotacao(){
+        double valorBitcoin = Consultas.getValor(1);
+        double valorEthereum = Consultas.getValor(2);
+        double valorRipple = Consultas.getValor(3);
+        
+        valorBitcoin = variarCotacao(valorBitcoin);
+        valorEthereum = variarCotacao(valorEthereum);
+        valorRipple = variarCotacao(valorRipple);
+        
+        try{
+            Conexao conexao = new Conexao();
+            Connection conn = conexao.getConnection();
+            MoedasDAO dao = new MoedasDAO(conn);
+            
+            dao.updateCotacao(valorBitcoin, valorEthereum, valorRipple);
+            
+            atualizarFramesCotacoes();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(view, "Erro de conexão!",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public double variarCotacao(double valorOriginal){
+        Random random = new Random();
+        
+        double limite = valorOriginal * 0.05;
+        double variacao = (random.nextDouble() * 2 - 1) * limite;
+        
+        return valorOriginal + variacao;
     }
     
     public void resetVisualizacoes(){
@@ -46,7 +83,7 @@ public class CPrincipal {
         view.getVendaBtViewSaldo().setSelected(false);
     }
     
-    public void atualizarCotacoes(){
+    public void atualizarFramesCotacoes(){
         double cotaBitcoin = Consultas.getValor(1);
         double cotaEthereum = Consultas.getValor(2);
         double cotaRipple = Consultas.getValor(3);

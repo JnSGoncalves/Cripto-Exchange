@@ -24,4 +24,26 @@ public class MoedasDAO {
         
         return resultado;
     }
+    
+    public void updateCotacao(double bitcoin, double ethereum, double ripple) throws SQLException{
+        String sql = """
+                    UPDATE moedas 
+                    SET valor = CASE 
+                        WHEN id = 1 THEN ?
+                        WHEN id = 2 THEN ?
+                        WHEN id = 3 THEN ?
+                        ELSE valor
+                    END
+                    WHERE id IN (1, 2, 3);
+                    """;
+        
+        PreparedStatement statemant = conn.prepareStatement(sql);
+        
+        statemant.setDouble(1, bitcoin);
+        statemant.setDouble(2, ethereum);
+        statemant.setDouble(3, ripple);
+        
+        statemant.execute();
+        conn.close();
+    }
 }
