@@ -9,6 +9,18 @@ public class Real extends Moedas implements Tarifacao {
     }
 
     @Override
+    public void adicionar(double valor){
+        quantia += valor;
+        quantia = Math.round(quantia * 100.0) / 100.0;
+    }
+    
+    @Override
+    public void remover(double valor){
+        quantia += valor;
+        quantia = Math.round(quantia * 100.0) / 100.0;
+    }
+    
+    @Override
     public double taxaDeCompra(double valor){
         return tarifaCompra * valor;
     }

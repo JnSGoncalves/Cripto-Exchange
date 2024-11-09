@@ -9,7 +9,8 @@ import model.moedas.Carteira;
 import view.JPrincipal;
 
 public class SaldoFuncoes {
-    private static final DecimalFormat formatoValor = new DecimalFormat("R$ #,##0.00");
+    public static final DecimalFormat formatoValor = new DecimalFormat("R$ #,##0.00",
+    DecimalFormatSymbols.getInstance(new Locale("pt", "BR")));
     // Como é trabalhado com muitas casas decimais a melhor opção é que as transações sejam realizadas com valores 
     // acima de 1 real
     private static final NumberFormat formatoQtd = new DecimalFormat("#0.######################", 
