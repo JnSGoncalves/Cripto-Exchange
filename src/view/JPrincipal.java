@@ -906,6 +906,11 @@ public class JPrincipal extends javax.swing.JFrame {
         vendaBtBitcoin.setText("Bitcoin");
         vendaBtBitcoin.setBorder(null);
         vendaBtBitcoin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        vendaBtBitcoin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendaBtBitcoinActionPerformed(evt);
+            }
+        });
         jpBotoesCriptoVenda.add(vendaBtBitcoin);
         jpBotoesCriptoVenda.add(jlSeparador10);
         jpBotoesCriptoVenda.add(jlSeparador11);
@@ -1019,10 +1024,10 @@ public class JPrincipal extends javax.swing.JFrame {
         lblVendaSaldo.setFont(saldoBitcoinValor.getFont());
         lblVendaSaldo.setForeground(new java.awt.Color(0, 0, 0));
         lblVendaSaldo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblVendaSaldo.setText("Saldo em Reais:");
-        lblVendaSaldo.setMaximumSize(new java.awt.Dimension(172, 21));
-        lblVendaSaldo.setMinimumSize(new java.awt.Dimension(172, 21));
-        lblVendaSaldo.setPreferredSize(new java.awt.Dimension(172, 21));
+        lblVendaSaldo.setText("Cripto Seleciona em conta:");
+        lblVendaSaldo.setMaximumSize(new java.awt.Dimension(250, 21));
+        lblVendaSaldo.setMinimumSize(new java.awt.Dimension(250, 21));
+        lblVendaSaldo.setPreferredSize(new java.awt.Dimension(250, 21));
         jpVendaSaldoAtual.add(lblVendaSaldo);
 
         vendaBtViewSaldo.setBackground(new java.awt.Color(0, 153, 204));
@@ -1042,10 +1047,10 @@ public class JPrincipal extends javax.swing.JFrame {
         vendaSaldoValor.setFont(saldoBitcoinValor.getFont());
         vendaSaldoValor.setForeground(new java.awt.Color(0, 0, 0));
         vendaSaldoValor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        vendaSaldoValor.setText("R$ -,--");
-        vendaSaldoValor.setMaximumSize(new java.awt.Dimension(172, 21));
-        vendaSaldoValor.setMinimumSize(new java.awt.Dimension(172, 21));
-        vendaSaldoValor.setPreferredSize(new java.awt.Dimension(172, 21));
+        vendaSaldoValor.setText("Qtd. -,--");
+        vendaSaldoValor.setMaximumSize(new java.awt.Dimension(250, 21));
+        vendaSaldoValor.setMinimumSize(new java.awt.Dimension(250, 21));
+        vendaSaldoValor.setPreferredSize(new java.awt.Dimension(250, 21));
         jpVendaSaldoAtual.add(vendaSaldoValor);
 
         jpBtCompra1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1257,6 +1262,10 @@ public class JPrincipal extends javax.swing.JFrame {
     private void extratoBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extratoBtActionPerformed
         c.verExtrato();
     }//GEN-LAST:event_extratoBtActionPerformed
+
+    private void vendaBtBitcoinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtBitcoinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vendaBtBitcoinActionPerformed
 
     public JLabel getLblBemVindo() {
         return lblBemVindo;

@@ -1745,6 +1745,9 @@
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="2"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vendaBtBitcoinActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jlSeparador10">
                         </Component>
@@ -2000,15 +2003,15 @@
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="4"/>
-                        <Property name="text" type="java.lang.String" value="Saldo em Reais:"/>
+                        <Property name="text" type="java.lang.String" value="Cripto Seleciona em conta:"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[172, 21]"/>
+                          <Dimension value="[250, 21]"/>
                         </Property>
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[172, 21]"/>
+                          <Dimension value="[250, 21]"/>
                         </Property>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[172, 21]"/>
+                          <Dimension value="[250, 21]"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -2047,15 +2050,15 @@
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="R$ -,--"/>
+                        <Property name="text" type="java.lang.String" value="Qtd. -,--"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[172, 21]"/>
+                          <Dimension value="[250, 21]"/>
                         </Property>
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[172, 21]"/>
+                          <Dimension value="[250, 21]"/>
                         </Property>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[172, 21]"/>
+                          <Dimension value="[250, 21]"/>
                         </Property>
                       </Properties>
                     </Component>
