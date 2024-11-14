@@ -107,7 +107,6 @@ public class CPrincipal {
     }
     
     // Aba Venda
-    // Possivel adição de uma visualização da taxa antes mesmo do click em comprar
     public void venda(){
         try{
             String qtdString = view.getVendaQtd().getText();
@@ -128,8 +127,17 @@ public class CPrincipal {
                 throw new IllegalArgumentException("Nenhuma moeda Selecionada");
             }
             
+            double qtd = 0;
+            if(qtdString.equals("*")){
+                switch (idMoeda){
+                    case 1 -> qtd = inv.getCarteira().getBitcoin().getQuantia();
+                    case 2 -> qtd = inv.getCarteira().getEthereum().getQuantia();
+                    case 3 -> qtd = inv.getCarteira().getRipple().getQuantia();
+                }
+            }
+            
             qtdString = qtdString.replace(",", ".");
-            double qtd = Double.parseDouble(qtdString);
+            qtd = qtd == 0 ? Double.parseDouble(qtdString) : qtd;
             
             if(FuncoesGerais.verificacaoSenha(view, inv)){
                 vendaFuncoes.venda(view, inv, qtd, idMoeda);                
@@ -164,8 +172,22 @@ public class CPrincipal {
                 throw new IllegalArgumentException("Nenhuma moeda Selecionada");
             }
             
+            double qtd = 0;
+            if(qtdString.equals("*") && view.isVendaSaldoVisivel()){
+                switch (idMoeda){
+                    case 1 -> qtd = inv.getCarteira().getBitcoin().getQuantia();
+                    case 2 -> qtd = inv.getCarteira().getEthereum().getQuantia();
+                    case 3 -> qtd = inv.getCarteira().getRipple().getQuantia();
+                }
+                double valor = qtd * Consultas.getValor(idMoeda);
+                valor = Math.round(valor * 100.0) / 100.0;
+                
+                view.getVendaValorReais().setText(String.format("%.2f", valor));
+                return;
+            }
+            
             qtdString = qtdString.replace(",", ".");
-            double qtd = Double.parseDouble(qtdString);
+            qtd = Double.parseDouble(qtdString);
             
             double valor = qtd * Consultas.getValor(idMoeda);
             valor = Math.round(valor * 100.0) / 100.0;
@@ -224,8 +246,12 @@ public class CPrincipal {
         }
     }
     
+    public void viewSaldoVenda(boolean saldoVisivel, int moeda){
+        inv.setCarteira(Consultas.getCarteira(inv.getId()));
+        vendaFuncoes.verSaldo(view, saldoVisivel, inv.getCarteira());
+    }
+    
     // Aba Compra
-    // Possivel adição de uma visualização da taxa antes mesmo do click em comprar
     public void compra(){
         try{
             String qtdString = view.getCompraQtd().getText();

@@ -1773,6 +1773,9 @@
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="2"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vendaBtEthereumActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jlSeparador12">
                         </Component>
@@ -1798,6 +1801,9 @@
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="2"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vendaBtRippleActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jlSeparador14">
                         </Component>

@@ -922,6 +922,11 @@ public class JPrincipal extends javax.swing.JFrame {
         vendaBtEthereum.setText("Ethereum");
         vendaBtEthereum.setBorder(null);
         vendaBtEthereum.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        vendaBtEthereum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendaBtEthereumActionPerformed(evt);
+            }
+        });
         jpBotoesCriptoVenda.add(vendaBtEthereum);
         jpBotoesCriptoVenda.add(jlSeparador12);
         jpBotoesCriptoVenda.add(jlSeparador13);
@@ -933,6 +938,11 @@ public class JPrincipal extends javax.swing.JFrame {
         vendaBtRipple.setText("Ripple (XRP)");
         vendaBtRipple.setBorder(null);
         vendaBtRipple.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        vendaBtRipple.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendaBtRippleActionPerformed(evt);
+            }
+        });
         jpBotoesCriptoVenda.add(vendaBtRipple);
         jpBotoesCriptoVenda.add(jlSeparador14);
 
@@ -1248,7 +1258,7 @@ public class JPrincipal extends javax.swing.JFrame {
 
     private void vendaBtViewSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtViewSaldoActionPerformed
         vendaSaldoVisivel = !vendaSaldoVisivel;
-        c.viewSaldoVenda(vendaSaldoVisivel);
+        vendaSaldoVisivel = c.viewSaldoVenda(vendaSaldoVisivel);
     }//GEN-LAST:event_vendaBtViewSaldoActionPerformed
 
     private void vendaBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtActionPerformed
@@ -1264,8 +1274,19 @@ public class JPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_extratoBtActionPerformed
 
     private void vendaBtBitcoinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtBitcoinActionPerformed
-        // TODO add your handling code here:
+        c.viewSaldoVenda(vendaSaldoVisivel, 0);
+        c.vendaQtdEmValor();
     }//GEN-LAST:event_vendaBtBitcoinActionPerformed
+
+    private void vendaBtEthereumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtEthereumActionPerformed
+        c.viewSaldoVenda(vendaSaldoVisivel, 0);
+        c.vendaQtdEmValor();
+    }//GEN-LAST:event_vendaBtEthereumActionPerformed
+
+    private void vendaBtRippleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtRippleActionPerformed
+        c.viewSaldoVenda(vendaSaldoVisivel, 0);
+        c.vendaQtdEmValor();
+    }//GEN-LAST:event_vendaBtRippleActionPerformed
 
     public JLabel getLblBemVindo() {
         return lblBemVindo;

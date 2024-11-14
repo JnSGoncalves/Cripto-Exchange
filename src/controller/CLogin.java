@@ -37,6 +37,7 @@ public class CLogin {
 
     public void logar() {
         Investidor inv = new Investidor(
+                // Verificação de CPF e senha faltando
                 view.getTxtCpf().getText(), 
                 view.getTxtSenha().getText()
         );
