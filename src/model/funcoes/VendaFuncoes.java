@@ -5,7 +5,10 @@ import DAO.InvestidoresDAO;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import model.moedas.Carteira;
@@ -15,6 +18,8 @@ import view.JPrincipal;
 
 public class VendaFuncoes {
     private static final DecimalFormat formatoValor = new DecimalFormat("R$ #,##0.00");
+    private static final NumberFormat formatoQtd = new DecimalFormat("#0.######################", 
+    DecimalFormatSymbols.getInstance(new Locale("pt", "BR")));
     private ArrayList<CotacaoMoedas> cotacoes = new ArrayList<>();
 
     public VendaFuncoes() {
@@ -28,9 +33,17 @@ public class VendaFuncoes {
         JLabel saldo = view.getVendaSaldoValor();
                 
         if(saldoVisivel){
-            saldo.setText(formatoValor.format(carteira.getReal().getQuantia()));
+            if(view.getVendaBtBitcoin().isSelected()){
+                saldo.setText(formatoQtd.format(carteira.getBitcoin().getQuantia()));
+            }else if(view.getVendaBtEthereum().isSelected()){
+                saldo.setText(formatoQtd.format(carteira.getEthereum().getQuantia()));
+            }else if(view.getVendaBtRipple().isSelected()){
+                saldo.setText(formatoQtd.format(carteira.getRipple().getQuantia()));
+            }else{
+                saldo.setText("Nenhuma Cripto Selecionada");
+            }
         }else{
-            saldo.setText("R$ -,--");
+            saldo.setText("Qtd. -,--");
         }
     }
     
@@ -120,6 +133,8 @@ public class VendaFuncoes {
 
                 dao.updateCarteira(inv);
 
+                ExtratoFuncoes.newExtrato(inv, "-", qtd, moeda, cotacao, taxa);
+                
                 JOptionPane.showMessageDialog(view, "Venda realizada com sucesso!",
                         "Saque", JOptionPane.INFORMATION_MESSAGE);
                 

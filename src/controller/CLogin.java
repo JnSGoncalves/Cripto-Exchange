@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import model.funcoes.FuncoesGerais;
 import model.moedas.Carteira;
 import model.user.Investidor;
 import view.JCadastro;
@@ -36,10 +37,27 @@ public class CLogin {
     }
 
     public void logar() {
-        Investidor inv = new Investidor(
-                view.getTxtCpf().getText(), 
-                view.getTxtSenha().getText()
-        );
+        String cpf = view.getTxtCpf().getText();
+        String senha = view.getTxtSenha().getText();
+        
+        if(cpf.isBlank() || senha.isBlank()){
+            JOptionPane.showMessageDialog(view, "Preencha todos os campos.",
+                 "Erro", JOptionPane.ERROR_MESSAGE);
+             return;
+        }
+        
+        if(!FuncoesGerais.somenteDigitos(cpf) || cpf.length() != 11) {
+            JOptionPane.showMessageDialog(view, "Digite um CPF válido",
+             "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if(!FuncoesGerais.somenteDigitos(senha) || senha.length() != 6){
+            JOptionPane.showMessageDialog(view, "A senha deve conter 6 digitos numérios",
+             "Erro", JOptionPane.ERROR_MESSAGE);
+             return;
+        }
+        
+        Investidor inv = new Investidor(cpf, senha);
         
         try{
             Conexao conexao = new Conexao();
@@ -70,7 +88,7 @@ public class CLogin {
                 jp.setVisible(true);
                 
             }else{
-                JOptionPane.showMessageDialog(view, "Conta de investidor não encontrada!",
+                JOptionPane.showMessageDialog(view, "CPF ou senha incorretos!",
                     "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }catch(SQLException e){

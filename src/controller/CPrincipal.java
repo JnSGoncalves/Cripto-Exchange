@@ -11,6 +11,7 @@ import model.funcoes.CompraFuncoes;
 import model.funcoes.SaldoFuncoes;
 import model.user.Investidor;
 import model.funcoes.Consultas;
+import model.funcoes.ExtratoFuncoes;
 import model.funcoes.FuncoesGerais;
 import model.funcoes.SaqueDepFuncoes;
 import model.funcoes.VendaFuncoes;
@@ -27,8 +28,7 @@ public class CPrincipal {
         this.inv = inv;
         this.view = view;
         this.view.getLblBemVindo().setText("Bem Vindo(a) " + this.inv.getNome()+ "!");
-//        this.view.getLblSaldoCPF().setText("CPF: " + FuncoesGerais.formatCPF(this.inv.getCpf()));
-        this.view.getLblSaldoCPF().setText("CPF: " + this.inv.getCpf());
+        this.view.getLblSaldoCPF().setText("CPF: " + FuncoesGerais.formatCPF(this.inv.getCpf()));
         
         compraFuncoes = new CompraFuncoes();
         vendaFuncoes = new VendaFuncoes();
@@ -81,6 +81,8 @@ public class CPrincipal {
         view.getCompraBtViewSaldo().setSelected(false);
         viewSaldoVenda(view.isVendaSaldoVisivel());
         view.getVendaBtViewSaldo().setSelected(false);
+        
+        view.getExtratoTxtArea().setText("");
     }
     
     public void atualizarFramesCotacoes(){
@@ -97,8 +99,14 @@ public class CPrincipal {
         view.getVendaCotacaoRipple().setText("Cotação: " + SaldoFuncoes.formatoValor.format(cotaRipple));
     }
     
+    // Aba Extrato
+    public void verExtrato(){
+        if(FuncoesGerais.verificacaoSenha(view, inv)){
+            ExtratoFuncoes.viewExtrato(view, inv);
+        }
+    }
+    
     // Aba Venda
-    // Possivel adição de uma visualização da taxa antes mesmo do click em comprar
     public void venda(){
         try{
             String qtdString = view.getVendaQtd().getText();
@@ -119,11 +127,20 @@ public class CPrincipal {
                 throw new IllegalArgumentException("Nenhuma moeda Selecionada");
             }
             
+            double qtd = 0;
+            if(qtdString.equals("*")){
+                switch (idMoeda){
+                    case 1 -> qtd = inv.getCarteira().getBitcoin().getQuantia();
+                    case 2 -> qtd = inv.getCarteira().getEthereum().getQuantia();
+                    case 3 -> qtd = inv.getCarteira().getRipple().getQuantia();
+                }
+            }
+            
             qtdString = qtdString.replace(",", ".");
-            double qtd = Double.parseDouble(qtdString);
+            qtd = qtd == 0 ? Double.parseDouble(qtdString) : qtd;
             
             if(FuncoesGerais.verificacaoSenha(view, inv)){
-                vendaFuncoes.venda(view, inv, qtd, idMoeda);
+                vendaFuncoes.venda(view, inv, qtd, idMoeda);                
                 vendaFuncoes.verSaldo(view, view.isVendaSaldoVisivel(), inv.getCarteira());
             }
             
@@ -155,8 +172,22 @@ public class CPrincipal {
                 throw new IllegalArgumentException("Nenhuma moeda Selecionada");
             }
             
+            double qtd = 0;
+            if(qtdString.equals("*") && view.isVendaSaldoVisivel()){
+                switch (idMoeda){
+                    case 1 -> qtd = inv.getCarteira().getBitcoin().getQuantia();
+                    case 2 -> qtd = inv.getCarteira().getEthereum().getQuantia();
+                    case 3 -> qtd = inv.getCarteira().getRipple().getQuantia();
+                }
+                double valor = qtd * Consultas.getValor(idMoeda);
+                valor = Math.round(valor * 100.0) / 100.0;
+                
+                view.getVendaValorReais().setText(String.format("%.2f", valor));
+                return;
+            }
+            
             qtdString = qtdString.replace(",", ".");
-            double qtd = Double.parseDouble(qtdString);
+            qtd = Double.parseDouble(qtdString);
             
             double valor = qtd * Consultas.getValor(idMoeda);
             valor = Math.round(valor * 100.0) / 100.0;
@@ -215,8 +246,12 @@ public class CPrincipal {
         }
     }
     
+    public void viewSaldoVenda(boolean saldoVisivel, int moeda){
+        inv.setCarteira(Consultas.getCarteira(inv.getId()));
+        vendaFuncoes.verSaldo(view, saldoVisivel, inv.getCarteira());
+    }
+    
     // Aba Compra
-    // Possivel adição de uma visualização da taxa antes mesmo do click em comprar
     public void compra(){
         try{
             String qtdString = view.getCompraQtd().getText();

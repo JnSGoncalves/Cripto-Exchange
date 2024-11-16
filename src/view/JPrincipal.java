@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import model.user.Investidor;
@@ -33,7 +34,6 @@ public class JPrincipal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
         btGroupCompra = new javax.swing.ButtonGroup();
@@ -64,7 +64,12 @@ public class JPrincipal extends javax.swing.JFrame {
         lblSaldoCPF = new javax.swing.JLabel();
         jpExtrato = new javax.swing.JPanel();
         lblTituloExtrato = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jpExtratoInterno = new javax.swing.JPanel();
+        jpExtratoTxtArea = new javax.swing.JPanel();
+        jpScrollPaneExtrato = new javax.swing.JScrollPane();
+        extratoTxtArea = new javax.swing.JTextArea();
+        jpBtExtrato = new javax.swing.JPanel();
+        extratoBt = new javax.swing.JButton();
         jpDepSaque = new javax.swing.JPanel();
         lblTituloSaque = new javax.swing.JLabel();
         lblTituloDeposito = new javax.swing.JLabel();
@@ -389,27 +394,76 @@ public class JPrincipal extends javax.swing.JFrame {
         lblTituloExtrato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTituloExtrato.setText("Extrato");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jpExtratoInterno.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jpExtratoTxtArea.setBackground(new java.awt.Color(255, 255, 255));
+
+        jpScrollPaneExtrato.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jpScrollPaneExtrato.setToolTipText("");
+
+        extratoTxtArea.setBackground(new java.awt.Color(204, 204, 255));
+        extratoTxtArea.setColumns(20);
+        extratoTxtArea.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 12)); // NOI18N
+        extratoTxtArea.setRows(5);
+        extratoTxtArea.setMinimumSize(new java.awt.Dimension(805, 330));
+        extratoTxtArea.setPreferredSize(new java.awt.Dimension(805, 330));
+        jpScrollPaneExtrato.setViewportView(extratoTxtArea);
+
+        javax.swing.GroupLayout jpExtratoTxtAreaLayout = new javax.swing.GroupLayout(jpExtratoTxtArea);
+        jpExtratoTxtArea.setLayout(jpExtratoTxtAreaLayout);
+        jpExtratoTxtAreaLayout.setHorizontalGroup(
+            jpExtratoTxtAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpExtratoTxtAreaLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jpScrollPaneExtrato, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 391, Short.MAX_VALUE)
+        jpExtratoTxtAreaLayout.setVerticalGroup(
+            jpExtratoTxtAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpExtratoTxtAreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jpScrollPaneExtrato, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        jpBtExtrato.setBackground(new java.awt.Color(255, 255, 255));
+
+        extratoBt.setBackground(new java.awt.Color(0, 153, 204));
+        extratoBt.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 14)); // NOI18N
+        extratoBt.setForeground(new java.awt.Color(255, 255, 255));
+        extratoBt.setText("Ver Extrato");
+        extratoBt.setMaximumSize(new java.awt.Dimension(120, 30));
+        extratoBt.setMinimumSize(new java.awt.Dimension(120, 30));
+        extratoBt.setPreferredSize(new java.awt.Dimension(120, 30));
+        extratoBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                extratoBtActionPerformed(evt);
+            }
+        });
+        jpBtExtrato.add(extratoBt);
+
+        javax.swing.GroupLayout jpExtratoInternoLayout = new javax.swing.GroupLayout(jpExtratoInterno);
+        jpExtratoInterno.setLayout(jpExtratoInternoLayout);
+        jpExtratoInternoLayout.setHorizontalGroup(
+            jpExtratoInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpExtratoTxtArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpBtExtrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jpExtratoInternoLayout.setVerticalGroup(
+            jpExtratoInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpExtratoInternoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jpBtExtrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpExtratoTxtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jpExtratoLayout = new javax.swing.GroupLayout(jpExtrato);
         jpExtrato.setLayout(jpExtratoLayout);
         jpExtratoLayout.setHorizontalGroup(
             jpExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpExtratoLayout.createSequentialGroup()
-                .addComponent(lblTituloExtrato, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 50, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpExtratoInterno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTituloExtrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpExtratoLayout.setVerticalGroup(
             jpExtratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,7 +471,7 @@ public class JPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblTituloExtrato)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jpExtratoInterno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpAbas.addTab("Extrato", jpExtrato);
@@ -852,6 +906,11 @@ public class JPrincipal extends javax.swing.JFrame {
         vendaBtBitcoin.setText("Bitcoin");
         vendaBtBitcoin.setBorder(null);
         vendaBtBitcoin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        vendaBtBitcoin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendaBtBitcoinActionPerformed(evt);
+            }
+        });
         jpBotoesCriptoVenda.add(vendaBtBitcoin);
         jpBotoesCriptoVenda.add(jlSeparador10);
         jpBotoesCriptoVenda.add(jlSeparador11);
@@ -863,6 +922,11 @@ public class JPrincipal extends javax.swing.JFrame {
         vendaBtEthereum.setText("Ethereum");
         vendaBtEthereum.setBorder(null);
         vendaBtEthereum.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        vendaBtEthereum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendaBtEthereumActionPerformed(evt);
+            }
+        });
         jpBotoesCriptoVenda.add(vendaBtEthereum);
         jpBotoesCriptoVenda.add(jlSeparador12);
         jpBotoesCriptoVenda.add(jlSeparador13);
@@ -874,6 +938,11 @@ public class JPrincipal extends javax.swing.JFrame {
         vendaBtRipple.setText("Ripple (XRP)");
         vendaBtRipple.setBorder(null);
         vendaBtRipple.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        vendaBtRipple.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendaBtRippleActionPerformed(evt);
+            }
+        });
         jpBotoesCriptoVenda.add(vendaBtRipple);
         jpBotoesCriptoVenda.add(jlSeparador14);
 
@@ -965,10 +1034,10 @@ public class JPrincipal extends javax.swing.JFrame {
         lblVendaSaldo.setFont(saldoBitcoinValor.getFont());
         lblVendaSaldo.setForeground(new java.awt.Color(0, 0, 0));
         lblVendaSaldo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblVendaSaldo.setText("Saldo em Reais:");
-        lblVendaSaldo.setMaximumSize(new java.awt.Dimension(172, 21));
-        lblVendaSaldo.setMinimumSize(new java.awt.Dimension(172, 21));
-        lblVendaSaldo.setPreferredSize(new java.awt.Dimension(172, 21));
+        lblVendaSaldo.setText("Cripto Seleciona em conta:");
+        lblVendaSaldo.setMaximumSize(new java.awt.Dimension(250, 21));
+        lblVendaSaldo.setMinimumSize(new java.awt.Dimension(250, 21));
+        lblVendaSaldo.setPreferredSize(new java.awt.Dimension(250, 21));
         jpVendaSaldoAtual.add(lblVendaSaldo);
 
         vendaBtViewSaldo.setBackground(new java.awt.Color(0, 153, 204));
@@ -988,10 +1057,10 @@ public class JPrincipal extends javax.swing.JFrame {
         vendaSaldoValor.setFont(saldoBitcoinValor.getFont());
         vendaSaldoValor.setForeground(new java.awt.Color(0, 0, 0));
         vendaSaldoValor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        vendaSaldoValor.setText("R$ -,--");
-        vendaSaldoValor.setMaximumSize(new java.awt.Dimension(172, 21));
-        vendaSaldoValor.setMinimumSize(new java.awt.Dimension(172, 21));
-        vendaSaldoValor.setPreferredSize(new java.awt.Dimension(172, 21));
+        vendaSaldoValor.setText("Qtd. -,--");
+        vendaSaldoValor.setMaximumSize(new java.awt.Dimension(250, 21));
+        vendaSaldoValor.setMinimumSize(new java.awt.Dimension(250, 21));
+        vendaSaldoValor.setPreferredSize(new java.awt.Dimension(250, 21));
         jpVendaSaldoAtual.add(vendaSaldoValor);
 
         jpBtCompra1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1189,7 +1258,7 @@ public class JPrincipal extends javax.swing.JFrame {
 
     private void vendaBtViewSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtViewSaldoActionPerformed
         vendaSaldoVisivel = !vendaSaldoVisivel;
-        c.viewSaldoVenda(vendaSaldoVisivel);
+        vendaSaldoVisivel = c.viewSaldoVenda(vendaSaldoVisivel);
     }//GEN-LAST:event_vendaBtViewSaldoActionPerformed
 
     private void vendaBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtActionPerformed
@@ -1200,6 +1269,25 @@ public class JPrincipal extends javax.swing.JFrame {
         c.atualizarCotacao();
     }//GEN-LAST:event_opcaoAtualizarCotacaoActionPerformed
 
+    private void extratoBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extratoBtActionPerformed
+        c.verExtrato();
+    }//GEN-LAST:event_extratoBtActionPerformed
+
+    private void vendaBtBitcoinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtBitcoinActionPerformed
+        c.viewSaldoVenda(vendaSaldoVisivel, 0);
+        c.vendaQtdEmValor();
+    }//GEN-LAST:event_vendaBtBitcoinActionPerformed
+
+    private void vendaBtEthereumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtEthereumActionPerformed
+        c.viewSaldoVenda(vendaSaldoVisivel, 0);
+        c.vendaQtdEmValor();
+    }//GEN-LAST:event_vendaBtEthereumActionPerformed
+
+    private void vendaBtRippleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtRippleActionPerformed
+        c.viewSaldoVenda(vendaSaldoVisivel, 0);
+        c.vendaQtdEmValor();
+    }//GEN-LAST:event_vendaBtRippleActionPerformed
+
     public JLabel getLblBemVindo() {
         return lblBemVindo;
     }
@@ -1207,7 +1295,13 @@ public class JPrincipal extends javax.swing.JFrame {
         return lblSaldoCPF;
     }
 
-    //Aba Venda
+    // Aba Extrato
+    public JTextArea getExtratoTxtArea() {
+        return extratoTxtArea;
+    }
+    
+    
+    // Aba Venda
     public JRadioButton getVendaBtBitcoin() {
         return vendaBtBitcoin;
     }
@@ -1354,10 +1448,11 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField compraQtd;
     private javax.swing.JLabel compraSaldoValor;
     private javax.swing.JTextField compraValorReais;
+    private javax.swing.JButton extratoBt;
+    private javax.swing.JTextArea extratoTxtArea;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlSeparador1;
     private javax.swing.JLabel jlSeparador10;
     private javax.swing.JLabel jlSeparador11;
@@ -1379,6 +1474,7 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jpBotoesCriptoVenda;
     private javax.swing.JPanel jpBtCompra;
     private javax.swing.JPanel jpBtCompra1;
+    private javax.swing.JPanel jpBtExtrato;
     private javax.swing.JPanel jpCompra;
     private javax.swing.JPanel jpCompraValores;
     private javax.swing.JPanel jpCotacaoCompra;
@@ -1388,6 +1484,8 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jpDepSaque;
     private javax.swing.JPanel jpDeposito;
     private javax.swing.JPanel jpExtrato;
+    private javax.swing.JPanel jpExtratoInterno;
+    private javax.swing.JPanel jpExtratoTxtArea;
     private javax.swing.JPanel jpFundo;
     private javax.swing.JPanel jpSCompraSaldoAtual;
     private javax.swing.JPanel jpSaldo;
@@ -1398,6 +1496,7 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jpSaque;
     private javax.swing.JPanel jpSaqueDepBotoes;
     private javax.swing.JPanel jpSaqueDepSaldoAtual;
+    private javax.swing.JScrollPane jpScrollPaneExtrato;
     private javax.swing.JPanel jpTitulosTextosCompra;
     private javax.swing.JPanel jpTitulosTextosVenda;
     private javax.swing.JPanel jpTxtValoresCompra;

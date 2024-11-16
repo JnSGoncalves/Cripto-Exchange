@@ -38,6 +38,8 @@ public class SaqueDepFuncoes {
             
             dao.updateCarteira(inv);
             
+            ExtratoFuncoes.newExtrato(inv, "+", valor, "Real", 0, 0);
+            
             JOptionPane.showMessageDialog(view, "Depósito realizado com sucesso!",
                     "Depósito", JOptionPane.INFORMATION_MESSAGE);
             
@@ -77,6 +79,8 @@ public class SaqueDepFuncoes {
             InvestidoresDAO dao = new InvestidoresDAO(conn);
             
             dao.updateCarteira(inv);
+            
+            ExtratoFuncoes.newExtrato(inv, "-", valor, "Real", 0, 0);
             
             JOptionPane.showMessageDialog(view, "Saque realizado com sucesso!",
                     "Saque", JOptionPane.INFORMATION_MESSAGE);
