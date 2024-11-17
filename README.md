@@ -38,7 +38,7 @@ A aplicação utiliza um banco de dados PostgreSQL local para armazenar os dados
    ```sql
    ALTER USER postgres WITH PASSWORD '1234';
 
-  Caso você esteja utilizando outro usuário ou senha no seu banco de dados PostgreSQL, e queira utilizar a aplicação sem modifica-lo, será necessário modificar as configurações de conexão no projeto, localizado no arquivo em `\src\DAO\Conexao.java`.
+  Caso você esteja utilizando outro usuário ou senha no seu banco de dados PostgreSQL, e queira utilizar a aplicação sem modifica-lo, será necessário modificar as configurações de conexão no projeto, no arquivo localizado em `\src\DAO\Conexao.java`.
     
 
 2. **Criar a Database**
