@@ -22,7 +22,7 @@ A aplicação oferece as seguintes funcionalidades:
 
 ### Pré-requisitos
 
-- **Java 17+**
+- **JDK 17+ ou Java 8+**
 - **PostgreSQL 17+**
 
 ## 🌐 Criação do Banco de Dados
